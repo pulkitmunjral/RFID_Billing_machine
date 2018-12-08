@@ -1,0 +1,3334 @@
+
+RFID_billing_machine.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00001326  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000019c  00800060  00001326  0000139a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .stab         00000834  00000000  00000000  00001538  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      0000016c  00000000  00000000  00001d6c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_aranges 00000020  00000000  00000000  00001ed8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_pubnames 0000006b  00000000  00000000  00001ef8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001194  00000000  00000000  00001f63  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000287  00000000  00000000  000030f7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000118b  00000000  00000000  0000337e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000b0  00000000  00000000  0000450c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000131  00000000  00000000  000045bc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000fef  00000000  00000000  000046ed  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_pubtypes 00000038  00000000  00000000  000056dc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_ranges 000000b0  00000000  00000000  00005714  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+       4:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+       8:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+       c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+      10:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+      14:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+      18:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+      1c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+      20:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+      24:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+      28:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+      2c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+      30:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+      34:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+      38:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+      3c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+      40:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+      44:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+      48:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+      4c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+      50:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+      54:	11 24       	eor	r1, r1
+      56:	1f be       	out	0x3f, r1	; 63
+      58:	cf e5       	ldi	r28, 0x5F	; 95
+      5a:	d4 e0       	ldi	r29, 0x04	; 4
+      5c:	de bf       	out	0x3e, r29	; 62
+      5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+      60:	11 e0       	ldi	r17, 0x01	; 1
+      62:	a0 e6       	ldi	r26, 0x60	; 96
+      64:	b0 e0       	ldi	r27, 0x00	; 0
+      66:	e6 e2       	ldi	r30, 0x26	; 38
+      68:	f3 e1       	ldi	r31, 0x13	; 19
+      6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+      6c:	05 90       	lpm	r0, Z+
+      6e:	0d 92       	st	X+, r0
+      70:	ac 3f       	cpi	r26, 0xFC	; 252
+      72:	b1 07       	cpc	r27, r17
+      74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+      76:	0e 94 5e 01 	call	0x2bc	; 0x2bc <main>
+      7a:	0c 94 91 09 	jmp	0x1322	; 0x1322 <_exit>
+
+0000007e <__bad_interrupt>:
+      7e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000082 <keypad>:
+
+unsigned char keypad()
+{
+while(1)
+{
+PORTC=0B00001110;
+      82:	9e e0       	ldi	r25, 0x0E	; 14
+{
+while(PINB==0B11110111);
+return '#';
+}
+
+PORTC=0B00001101;
+      84:	2d e0       	ldi	r18, 0x0D	; 13
+{
+while(PINB==0B11110111);
+return 0;
+}
+
+PORTC=0B00001011;
+      86:	3b e0       	ldi	r19, 0x0B	; 11
+{
+while(PINB==0B11110111);
+return '*';
+}
+
+PORTC=0B00000111;
+      88:	47 e0       	ldi	r20, 0x07	; 7
+
+unsigned char keypad()
+{
+while(1)
+{
+PORTC=0B00001110;
+      8a:	95 bb       	out	0x15, r25	; 21
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+      8c:	ef e0       	ldi	r30, 0x0F	; 15
+      8e:	f7 e2       	ldi	r31, 0x27	; 39
+      90:	31 97       	sbiw	r30, 0x01	; 1
+      92:	f1 f7       	brne	.-4      	; 0x90 <keypad+0xe>
+      94:	00 c0       	rjmp	.+0      	; 0x96 <keypad+0x14>
+      96:	00 00       	nop
+_delay_ms(5);
+if(PINB==0b11111110)
+      98:	86 b3       	in	r24, 0x16	; 22
+      9a:	8e 3f       	cpi	r24, 0xFE	; 254
+      9c:	29 f4       	brne	.+10     	; 0xa8 <keypad+0x26>
+{
+while(PINB==0b11111110);
+      9e:	86 b3       	in	r24, 0x16	; 22
+      a0:	8e 3f       	cpi	r24, 0xFE	; 254
+      a2:	e9 f3       	breq	.-6      	; 0x9e <keypad+0x1c>
+return 1;
+      a4:	81 e0       	ldi	r24, 0x01	; 1
+      a6:	08 95       	ret
+}
+else if(PINB==0B11111101)
+      a8:	86 b3       	in	r24, 0x16	; 22
+      aa:	8d 3f       	cpi	r24, 0xFD	; 253
+      ac:	29 f4       	brne	.+10     	; 0xb8 <keypad+0x36>
+{
+while(PINB==0b11111101);
+      ae:	86 b3       	in	r24, 0x16	; 22
+      b0:	8d 3f       	cpi	r24, 0xFD	; 253
+      b2:	e9 f3       	breq	.-6      	; 0xae <keypad+0x2c>
+return 4;
+      b4:	84 e0       	ldi	r24, 0x04	; 4
+      b6:	08 95       	ret
+}
+else if(PINB==0B11111011)
+      b8:	86 b3       	in	r24, 0x16	; 22
+      ba:	8b 3f       	cpi	r24, 0xFB	; 251
+      bc:	29 f4       	brne	.+10     	; 0xc8 <keypad+0x46>
+{
+while(PINB==0B11111011);
+      be:	86 b3       	in	r24, 0x16	; 22
+      c0:	8b 3f       	cpi	r24, 0xFB	; 251
+      c2:	e9 f3       	breq	.-6      	; 0xbe <keypad+0x3c>
+return 7;
+      c4:	87 e0       	ldi	r24, 0x07	; 7
+      c6:	08 95       	ret
+}
+else if(PINB==0B11110111)
+      c8:	86 b3       	in	r24, 0x16	; 22
+      ca:	87 3f       	cpi	r24, 0xF7	; 247
+      cc:	29 f4       	brne	.+10     	; 0xd8 <keypad+0x56>
+{
+while(PINB==0B11110111);
+      ce:	86 b3       	in	r24, 0x16	; 22
+      d0:	87 3f       	cpi	r24, 0xF7	; 247
+      d2:	e9 f3       	breq	.-6      	; 0xce <keypad+0x4c>
+return '#';
+      d4:	83 e2       	ldi	r24, 0x23	; 35
+      d6:	08 95       	ret
+}
+
+PORTC=0B00001101;
+      d8:	25 bb       	out	0x15, r18	; 21
+      da:	ef e0       	ldi	r30, 0x0F	; 15
+      dc:	f7 e2       	ldi	r31, 0x27	; 39
+      de:	31 97       	sbiw	r30, 0x01	; 1
+      e0:	f1 f7       	brne	.-4      	; 0xde <keypad+0x5c>
+      e2:	00 c0       	rjmp	.+0      	; 0xe4 <keypad+0x62>
+      e4:	00 00       	nop
+_delay_ms(5);
+if(PINB==0b11111110)
+      e6:	86 b3       	in	r24, 0x16	; 22
+      e8:	8e 3f       	cpi	r24, 0xFE	; 254
+      ea:	29 f4       	brne	.+10     	; 0xf6 <keypad+0x74>
+{
+while(PINB==0b11111110);
+      ec:	86 b3       	in	r24, 0x16	; 22
+      ee:	8e 3f       	cpi	r24, 0xFE	; 254
+      f0:	e9 f3       	breq	.-6      	; 0xec <keypad+0x6a>
+return 2;
+      f2:	82 e0       	ldi	r24, 0x02	; 2
+      f4:	08 95       	ret
+}
+else if(PINB==0B11111101)
+      f6:	86 b3       	in	r24, 0x16	; 22
+      f8:	8d 3f       	cpi	r24, 0xFD	; 253
+      fa:	29 f4       	brne	.+10     	; 0x106 <keypad+0x84>
+{
+while(PINB==0b11111101);
+      fc:	86 b3       	in	r24, 0x16	; 22
+      fe:	8d 3f       	cpi	r24, 0xFD	; 253
+     100:	e9 f3       	breq	.-6      	; 0xfc <keypad+0x7a>
+return 5;
+     102:	85 e0       	ldi	r24, 0x05	; 5
+     104:	08 95       	ret
+}
+else if(PINB==0B11111011)
+     106:	86 b3       	in	r24, 0x16	; 22
+     108:	8b 3f       	cpi	r24, 0xFB	; 251
+     10a:	29 f4       	brne	.+10     	; 0x116 <keypad+0x94>
+{
+while(PINB==0B11111011);
+     10c:	86 b3       	in	r24, 0x16	; 22
+     10e:	8b 3f       	cpi	r24, 0xFB	; 251
+     110:	e9 f3       	breq	.-6      	; 0x10c <keypad+0x8a>
+return 8;
+     112:	88 e0       	ldi	r24, 0x08	; 8
+     114:	08 95       	ret
+}
+else if(PINB==0B11110111)
+     116:	86 b3       	in	r24, 0x16	; 22
+     118:	87 3f       	cpi	r24, 0xF7	; 247
+     11a:	29 f4       	brne	.+10     	; 0x126 <keypad+0xa4>
+{
+while(PINB==0B11110111);
+     11c:	86 b3       	in	r24, 0x16	; 22
+     11e:	87 3f       	cpi	r24, 0xF7	; 247
+     120:	e9 f3       	breq	.-6      	; 0x11c <keypad+0x9a>
+return 0;
+     122:	80 e0       	ldi	r24, 0x00	; 0
+     124:	08 95       	ret
+}
+
+PORTC=0B00001011;
+     126:	35 bb       	out	0x15, r19	; 21
+     128:	ef e0       	ldi	r30, 0x0F	; 15
+     12a:	f7 e2       	ldi	r31, 0x27	; 39
+     12c:	31 97       	sbiw	r30, 0x01	; 1
+     12e:	f1 f7       	brne	.-4      	; 0x12c <keypad+0xaa>
+     130:	00 c0       	rjmp	.+0      	; 0x132 <keypad+0xb0>
+     132:	00 00       	nop
+_delay_ms(5);
+if(PINB==0b11111110)
+     134:	86 b3       	in	r24, 0x16	; 22
+     136:	8e 3f       	cpi	r24, 0xFE	; 254
+     138:	29 f4       	brne	.+10     	; 0x144 <keypad+0xc2>
+{
+while(PINB==0b11111110);
+     13a:	86 b3       	in	r24, 0x16	; 22
+     13c:	8e 3f       	cpi	r24, 0xFE	; 254
+     13e:	e9 f3       	breq	.-6      	; 0x13a <keypad+0xb8>
+return 3;
+     140:	83 e0       	ldi	r24, 0x03	; 3
+     142:	08 95       	ret
+}
+else if(PINB==0B11111101)
+     144:	86 b3       	in	r24, 0x16	; 22
+     146:	8d 3f       	cpi	r24, 0xFD	; 253
+     148:	29 f4       	brne	.+10     	; 0x154 <keypad+0xd2>
+{
+while(PINB==0b11111101);
+     14a:	86 b3       	in	r24, 0x16	; 22
+     14c:	8d 3f       	cpi	r24, 0xFD	; 253
+     14e:	e9 f3       	breq	.-6      	; 0x14a <keypad+0xc8>
+return 6;
+     150:	86 e0       	ldi	r24, 0x06	; 6
+     152:	08 95       	ret
+}
+else if(PINB==0B11111011)
+     154:	86 b3       	in	r24, 0x16	; 22
+     156:	8b 3f       	cpi	r24, 0xFB	; 251
+     158:	29 f4       	brne	.+10     	; 0x164 <keypad+0xe2>
+{
+while(PINB==0B11111011);
+     15a:	86 b3       	in	r24, 0x16	; 22
+     15c:	8b 3f       	cpi	r24, 0xFB	; 251
+     15e:	e9 f3       	breq	.-6      	; 0x15a <keypad+0xd8>
+return 9;
+     160:	89 e0       	ldi	r24, 0x09	; 9
+     162:	08 95       	ret
+}
+else if(PINB==0B11110111)
+     164:	86 b3       	in	r24, 0x16	; 22
+     166:	87 3f       	cpi	r24, 0xF7	; 247
+     168:	29 f4       	brne	.+10     	; 0x174 <keypad+0xf2>
+{
+while(PINB==0B11110111);
+     16a:	86 b3       	in	r24, 0x16	; 22
+     16c:	87 3f       	cpi	r24, 0xF7	; 247
+     16e:	e9 f3       	breq	.-6      	; 0x16a <keypad+0xe8>
+return '*';
+     170:	8a e2       	ldi	r24, 0x2A	; 42
+     172:	08 95       	ret
+}
+
+PORTC=0B00000111;
+     174:	45 bb       	out	0x15, r20	; 21
+     176:	ef e0       	ldi	r30, 0x0F	; 15
+     178:	f7 e2       	ldi	r31, 0x27	; 39
+     17a:	31 97       	sbiw	r30, 0x01	; 1
+     17c:	f1 f7       	brne	.-4      	; 0x17a <keypad+0xf8>
+     17e:	00 c0       	rjmp	.+0      	; 0x180 <keypad+0xfe>
+     180:	00 00       	nop
+_delay_ms(5);
+if(PINB==0b11111110)
+     182:	86 b3       	in	r24, 0x16	; 22
+     184:	8e 3f       	cpi	r24, 0xFE	; 254
+     186:	29 f4       	brne	.+10     	; 0x192 <keypad+0x110>
+{
+while(PINB==0b11111110);
+     188:	86 b3       	in	r24, 0x16	; 22
+     18a:	8e 3f       	cpi	r24, 0xFE	; 254
+     18c:	e9 f3       	breq	.-6      	; 0x188 <keypad+0x106>
+return 11;
+     18e:	8b e0       	ldi	r24, 0x0B	; 11
+     190:	08 95       	ret
+}
+else if(PINB==0B11111101)
+     192:	86 b3       	in	r24, 0x16	; 22
+     194:	8d 3f       	cpi	r24, 0xFD	; 253
+     196:	29 f4       	brne	.+10     	; 0x1a2 <keypad+0x120>
+{
+while(PINB==0b11111101);
+     198:	86 b3       	in	r24, 0x16	; 22
+     19a:	8d 3f       	cpi	r24, 0xFD	; 253
+     19c:	e9 f3       	breq	.-6      	; 0x198 <keypad+0x116>
+return 22;
+     19e:	86 e1       	ldi	r24, 0x16	; 22
+     1a0:	08 95       	ret
+}
+else if(PINB==0B11111011)
+     1a2:	86 b3       	in	r24, 0x16	; 22
+     1a4:	8b 3f       	cpi	r24, 0xFB	; 251
+     1a6:	29 f4       	brne	.+10     	; 0x1b2 <keypad+0x130>
+{
+while(PINB==0B11111011);
+     1a8:	86 b3       	in	r24, 0x16	; 22
+     1aa:	8b 3f       	cpi	r24, 0xFB	; 251
+     1ac:	e9 f3       	breq	.-6      	; 0x1a8 <keypad+0x126>
+return 33;
+     1ae:	81 e2       	ldi	r24, 0x21	; 33
+     1b0:	08 95       	ret
+}
+else if(PINB==0B11110111)
+     1b2:	86 b3       	in	r24, 0x16	; 22
+     1b4:	87 3f       	cpi	r24, 0xF7	; 247
+     1b6:	09 f0       	breq	.+2      	; 0x1ba <keypad+0x138>
+     1b8:	68 cf       	rjmp	.-304    	; 0x8a <keypad+0x8>
+{
+while(PINB==0B11110111);
+     1ba:	86 b3       	in	r24, 0x16	; 22
+     1bc:	87 3f       	cpi	r24, 0xF7	; 247
+     1be:	e9 f3       	breq	.-6      	; 0x1ba <keypad+0x138>
+return 44;
+     1c0:	8c e2       	ldi	r24, 0x2C	; 44
+}
+}
+}
+     1c2:	08 95       	ret
+
+000001c4 <dt>:
+	   	/* Auto Increment cursor */
+  }
+
+void dt(char data)      /*to send data in 4 bite mode*/
+     {
+	  PORTA=((data&0xF0)|0x05);
+     1c4:	98 2f       	mov	r25, r24
+     1c6:	90 7f       	andi	r25, 0xF0	; 240
+     1c8:	95 60       	ori	r25, 0x05	; 5
+     1ca:	9b bb       	out	0x1b, r25	; 27
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     1cc:	9a e1       	ldi	r25, 0x1A	; 26
+     1ce:	9a 95       	dec	r25
+     1d0:	f1 f7       	brne	.-4      	; 0x1ce <dt+0xa>
+     1d2:	00 c0       	rjmp	.+0      	; 0x1d4 <dt+0x10>
+	  _delay_us(10);
+      PORTA=PORTA-0x04;
+     1d4:	9b b3       	in	r25, 0x1b	; 27
+     1d6:	94 50       	subi	r25, 0x04	; 4
+     1d8:	9b bb       	out	0x1b, r25	; 27
+     1da:	9a e1       	ldi	r25, 0x1A	; 26
+     1dc:	9a 95       	dec	r25
+     1de:	f1 f7       	brne	.-4      	; 0x1dc <dt+0x18>
+     1e0:	00 c0       	rjmp	.+0      	; 0x1e2 <dt+0x1e>
+	  _delay_us(10);
+	  PORTA=(((data<<4)&0xF0)|0x05);
+     1e2:	82 95       	swap	r24
+     1e4:	80 7f       	andi	r24, 0xF0	; 240
+     1e6:	85 60       	ori	r24, 0x05	; 5
+     1e8:	8b bb       	out	0x1b, r24	; 27
+     1ea:	8a e1       	ldi	r24, 0x1A	; 26
+     1ec:	8a 95       	dec	r24
+     1ee:	f1 f7       	brne	.-4      	; 0x1ec <dt+0x28>
+     1f0:	00 c0       	rjmp	.+0      	; 0x1f2 <dt+0x2e>
+	   _delay_us(10); 
+	  PORTA=PORTA-0x04;
+     1f2:	8b b3       	in	r24, 0x1b	; 27
+     1f4:	84 50       	subi	r24, 0x04	; 4
+     1f6:	8b bb       	out	0x1b, r24	; 27
+	  }
+     1f8:	08 95       	ret
+
+000001fa <loc>:
+
+void loc(char com)      /*to send location in 4 bite mode*/
+    {
+	  PORTA=((com&0xF0)|0x04);
+     1fa:	98 2f       	mov	r25, r24
+     1fc:	90 7f       	andi	r25, 0xF0	; 240
+     1fe:	94 60       	ori	r25, 0x04	; 4
+     200:	9b bb       	out	0x1b, r25	; 27
+     202:	9a e1       	ldi	r25, 0x1A	; 26
+     204:	9a 95       	dec	r25
+     206:	f1 f7       	brne	.-4      	; 0x204 <loc+0xa>
+     208:	00 c0       	rjmp	.+0      	; 0x20a <loc+0x10>
+	  _delay_us(10);
+      PORTA=PORTA-0x04;
+     20a:	9b b3       	in	r25, 0x1b	; 27
+     20c:	94 50       	subi	r25, 0x04	; 4
+     20e:	9b bb       	out	0x1b, r25	; 27
+     210:	9a e1       	ldi	r25, 0x1A	; 26
+     212:	9a 95       	dec	r25
+     214:	f1 f7       	brne	.-4      	; 0x212 <loc+0x18>
+     216:	00 c0       	rjmp	.+0      	; 0x218 <loc+0x1e>
+	  _delay_us(10);
+	  PORTA=(((com<<4)&0xF0)|0x04); 
+     218:	82 95       	swap	r24
+     21a:	80 7f       	andi	r24, 0xF0	; 240
+     21c:	84 60       	ori	r24, 0x04	; 4
+     21e:	8b bb       	out	0x1b, r24	; 27
+     220:	8a e1       	ldi	r24, 0x1A	; 26
+     222:	8a 95       	dec	r24
+     224:	f1 f7       	brne	.-4      	; 0x222 <loc+0x28>
+     226:	00 c0       	rjmp	.+0      	; 0x228 <loc+0x2e>
+	   _delay_us(10);
+	  PORTA=PORTA-0x04;
+     228:	8b b3       	in	r24, 0x1b	; 27
+     22a:	84 50       	subi	r24, 0x04	; 4
+     22c:	8b bb       	out	0x1b, r24	; 27
+	}
+     22e:	08 95       	ret
+
+00000230 <LCD_Init>:
+}
+}
+}
+
+void LCD_Init(void)	/* LCD Initialize function */
+{   loc(0x02);         /* to take lcd at home screen */
+     230:	82 e0       	ldi	r24, 0x02	; 2
+     232:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+    loc(0x28);  	/* Initialization of 16X2 LCD in 8bit mode */
+     236:	88 e2       	ldi	r24, 0x28	; 40
+     238:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+	loc(0x0C);	        /* Display ON Cursor OFF */
+     23c:	8c e0       	ldi	r24, 0x0C	; 12
+     23e:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+	   	/* Auto Increment cursor */
+  }
+     242:	08 95       	ret
+
+00000244 <str>:
+	   _delay_us(10);
+	  PORTA=PORTA-0x04;
+	}
+
+void str(char *str)      /*to print string on lcd*/
+{int i=0;
+     244:	cf 93       	push	r28
+     246:	df 93       	push	r29
+     248:	ec 01       	movw	r28, r24
+while(str[i]!='\0')
+     24a:	88 81       	ld	r24, Y
+     24c:	88 23       	and	r24, r24
+     24e:	31 f0       	breq	.+12     	; 0x25c <str+0x18>
+	  PORTA=(((com<<4)&0xF0)|0x04); 
+	   _delay_us(10);
+	  PORTA=PORTA-0x04;
+	}
+
+void str(char *str)      /*to print string on lcd*/
+     250:	21 96       	adiw	r28, 0x01	; 1
+{int i=0;
+while(str[i]!='\0')
+{dt(str[i]);	
+     252:	0e 94 e2 00 	call	0x1c4	; 0x1c4 <dt>
+	  PORTA=PORTA-0x04;
+	}
+
+void str(char *str)      /*to print string on lcd*/
+{int i=0;
+while(str[i]!='\0')
+     256:	89 91       	ld	r24, Y+
+     258:	88 23       	and	r24, r24
+     25a:	d9 f7       	brne	.-10     	; 0x252 <str+0xe>
+{dt(str[i]);	
+i++;
+}
+}
+     25c:	df 91       	pop	r29
+     25e:	cf 91       	pop	r28
+     260:	08 95       	ret
+
+00000262 <num>:
+
+void num(int ch)              /*to print number on lcd*/
+{
+     262:	cf 92       	push	r12
+     264:	df 92       	push	r13
+     266:	ef 92       	push	r14
+     268:	ff 92       	push	r15
+     26a:	0f 93       	push	r16
+     26c:	1f 93       	push	r17
+     26e:	cf 93       	push	r28
+     270:	df 93       	push	r29
+     272:	ec 01       	movw	r28, r24
+int x;
+if(ch==0)
+     274:	00 97       	sbiw	r24, 0x00	; 0
+     276:	21 f4       	brne	.+8      	; 0x280 <num+0x1e>
+ dt(48);
+     278:	80 e3       	ldi	r24, 0x30	; 48
+     27a:	0e 94 e2 00 	call	0x1c4	; 0x1c4 <dt>
+     27e:	15 c0       	rjmp	.+42     	; 0x2aa <num+0x48>
+  while(ch!=0)
+   {loc(0x04);
+     x=ch%10;
+     280:	0a e0       	ldi	r16, 0x0A	; 10
+     282:	10 e0       	ldi	r17, 0x00	; 0
+{
+int x;
+if(ch==0)
+ dt(48);
+  while(ch!=0)
+   {loc(0x04);
+     284:	84 e0       	ldi	r24, 0x04	; 4
+     286:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+     x=ch%10;
+     28a:	ce 01       	movw	r24, r28
+     28c:	b8 01       	movw	r22, r16
+     28e:	0e 94 55 09 	call	0x12aa	; 0x12aa <__divmodhi4>
+     292:	e6 2e       	mov	r14, r22
+     294:	f7 2e       	mov	r15, r23
+    dt(48+x);
+     296:	80 5d       	subi	r24, 0xD0	; 208
+     298:	0e 94 e2 00 	call	0x1c4	; 0x1c4 <dt>
+	ch=ch/10;
+     29c:	ce 2c       	mov	r12, r14
+     29e:	e6 01       	movw	r28, r12
+     2a0:	6e 01       	movw	r12, r28
+     2a2:	df 2c       	mov	r13, r15
+     2a4:	e6 01       	movw	r28, r12
+void num(int ch)              /*to print number on lcd*/
+{
+int x;
+if(ch==0)
+ dt(48);
+  while(ch!=0)
+     2a6:	20 97       	sbiw	r28, 0x00	; 0
+     2a8:	69 f7       	brne	.-38     	; 0x284 <num+0x22>
+   {loc(0x04);
+     x=ch%10;
+    dt(48+x);
+	ch=ch/10;
+}
+}
+     2aa:	df 91       	pop	r29
+     2ac:	cf 91       	pop	r28
+     2ae:	1f 91       	pop	r17
+     2b0:	0f 91       	pop	r16
+     2b2:	ff 90       	pop	r15
+     2b4:	ef 90       	pop	r14
+     2b6:	df 90       	pop	r13
+     2b8:	cf 90       	pop	r12
+     2ba:	08 95       	ret
+
+000002bc <main>:
+void send(char send);
+char rec(void);
+
+void main() 
+
+{DDRB=0xf0;
+     2bc:	2f 92       	push	r2
+     2be:	3f 92       	push	r3
+     2c0:	4f 92       	push	r4
+     2c2:	5f 92       	push	r5
+     2c4:	6f 92       	push	r6
+     2c6:	7f 92       	push	r7
+     2c8:	8f 92       	push	r8
+     2ca:	9f 92       	push	r9
+     2cc:	af 92       	push	r10
+     2ce:	bf 92       	push	r11
+     2d0:	cf 92       	push	r12
+     2d2:	df 92       	push	r13
+     2d4:	ef 92       	push	r14
+     2d6:	ff 92       	push	r15
+     2d8:	0f 93       	push	r16
+     2da:	1f 93       	push	r17
+     2dc:	df 93       	push	r29
+     2de:	cf 93       	push	r28
+     2e0:	cd b7       	in	r28, 0x3d	; 61
+     2e2:	de b7       	in	r29, 0x3e	; 62
+     2e4:	c6 52       	subi	r28, 0x26	; 38
+     2e6:	d1 40       	sbci	r29, 0x01	; 1
+     2e8:	0f b6       	in	r0, 0x3f	; 63
+     2ea:	f8 94       	cli
+     2ec:	de bf       	out	0x3e, r29	; 62
+     2ee:	0f be       	out	0x3f, r0	; 63
+     2f0:	cd bf       	out	0x3d, r28	; 61
+     2f2:	90 ef       	ldi	r25, 0xF0	; 240
+     2f4:	97 bb       	out	0x17, r25	; 23
+DDRA=0xff;
+     2f6:	8f ef       	ldi	r24, 0xFF	; 255
+     2f8:	8a bb       	out	0x1a, r24	; 26
+DDRC=0xff;
+     2fa:	84 bb       	out	0x14, r24	; 20
+DDRD=0xff;
+     2fc:	81 bb       	out	0x11, r24	; 17
+PORTB=0B11111111;
+     2fe:	88 bb       	out	0x18, r24	; 24
+
+
+int x,X,Y,y,z,i,j,k,p;                                    /*rfid part */
+char a[1][12],b[20][12]={{0,0,0,0},
+     300:	fe 01       	movw	r30, r28
+     302:	3d 96       	adiw	r30, 0x0d	; 13
+     304:	df 01       	movw	r26, r30
+     306:	1d 92       	st	X+, r1
+     308:	9a 95       	dec	r25
+     30a:	e9 f7       	brne	.-6      	; 0x306 <main+0x4a>
+	                   {0,1,0,0},
+					   {0,2,0,0}};
+						   
+						   
+
+LCD_Init();
+     30c:	0e 94 18 01 	call	0x230	; 0x230 <LCD_Init>
+unsigned char keypad();
+void ini();   /*rfid*/
+void send(char send);
+char rec(void);
+
+void main() 
+     310:	ed ef       	ldi	r30, 0xFD	; 253
+     312:	f0 e0       	ldi	r31, 0x00	; 0
+     314:	ec 0f       	add	r30, r28
+     316:	fd 1f       	adc	r31, r29
+     318:	34 96       	adiw	r30, 0x04	; 4
+     31a:	c3 5e       	subi	r28, 0xE3	; 227
+     31c:	de 4f       	sbci	r29, 0xFE	; 254
+     31e:	f9 83       	std	Y+1, r31	; 0x01
+     320:	e8 83       	st	Y, r30
+     322:	cd 51       	subi	r28, 0x1D	; 29
+     324:	d1 40       	sbci	r29, 0x01	; 1
+{loc(0x01);
+_delay_ms(10);
+loc(0x83);
+str("Down Town Cafe");
+loc(0x94);
+str("Insert New Card");
+     326:	6e 01       	movw	r12, r28
+     328:	08 94       	sec
+     32a:	c1 1c       	adc	r12, r1
+     32c:	d1 1c       	adc	r13, r1
+unsigned char keypad();
+void ini();   /*rfid*/
+void send(char send);
+char rec(void);
+
+void main() 
+     32e:	c6 01       	movw	r24, r12
+     330:	c9 5e       	subi	r28, 0xE9	; 233
+     332:	de 4f       	sbci	r29, 0xFE	; 254
+     334:	c8 82       	st	Y, r12
+     336:	c7 51       	subi	r28, 0x17	; 23
+     338:	d1 40       	sbci	r29, 0x01	; 1
+     33a:	c8 5e       	subi	r28, 0xE8	; 232
+     33c:	de 4f       	sbci	r29, 0xFE	; 254
+     33e:	98 83       	st	Y, r25
+     340:	c8 51       	subi	r28, 0x18	; 24
+     342:	d1 40       	sbci	r29, 0x01	; 1
+     344:	25 e0       	ldi	r18, 0x05	; 5
+     346:	31 e0       	ldi	r19, 0x01	; 1
+     348:	2c 0f       	add	r18, r28
+     34a:	3d 1f       	adc	r19, r29
+     34c:	2c 5f       	subi	r18, 0xFC	; 252
+     34e:	3f 4f       	sbci	r19, 0xFF	; 255
+     350:	c7 5e       	subi	r28, 0xE7	; 231
+     352:	de 4f       	sbci	r29, 0xFE	; 254
+     354:	39 83       	std	Y+1, r19	; 0x01
+     356:	28 83       	st	Y, r18
+     358:	c9 51       	subi	r28, 0x19	; 25
+     35a:	d1 40       	sbci	r29, 0x01	; 1
+loc(0x83);
+str("Down Town Cafe");
+loc(0x94);
+str("New Balance :-");
+loc(0xa5);
+num(m);
+     35c:	49 e0       	ldi	r20, 0x09	; 9
+     35e:	51 e0       	ldi	r21, 0x01	; 1
+     360:	4c 0f       	add	r20, r28
+     362:	5d 1f       	adc	r21, r29
+     364:	48 5f       	subi	r20, 0xF8	; 248
+     366:	5f 4f       	sbci	r21, 0xFF	; 255
+     368:	cd 5d       	subi	r28, 0xDD	; 221
+     36a:	de 4f       	sbci	r29, 0xFE	; 254
+     36c:	59 83       	std	Y+1, r21	; 0x01
+     36e:	48 83       	st	Y, r20
+     370:	c3 52       	subi	r28, 0x23	; 35
+     372:	d1 40       	sbci	r29, 0x01	; 1
+unsigned char keypad();
+void ini();   /*rfid*/
+void send(char send);
+char rec(void);
+
+void main() 
+     374:	c5 5e       	subi	r28, 0xE5	; 229
+     376:	de 4f       	sbci	r29, 0xFE	; 254
+     378:	c8 82       	st	Y, r12
+     37a:	cb 51       	subi	r28, 0x1B	; 27
+     37c:	d1 40       	sbci	r29, 0x01	; 1
+     37e:	c4 5e       	subi	r28, 0xE4	; 228
+     380:	de 4f       	sbci	r29, 0xFE	; 254
+     382:	98 83       	st	Y, r25
+     384:	cc 51       	subi	r28, 0x1C	; 28
+     386:	d1 40       	sbci	r29, 0x01	; 1
+str("Insert New Card");
+for(i=0;i<=3;i++)                
+{
+x=keypad();
+a[0][i]=x;
+str(".");
+     388:	81 ee       	ldi	r24, 0xE1	; 225
+     38a:	90 e0       	ldi	r25, 0x00	; 0
+     38c:	cd 5e       	subi	r28, 0xED	; 237
+     38e:	de 4f       	sbci	r29, 0xFE	; 254
+     390:	88 83       	st	Y, r24
+     392:	c3 51       	subi	r28, 0x13	; 19
+     394:	d1 40       	sbci	r29, 0x01	; 1
+     396:	cc 5e       	subi	r28, 0xEC	; 236
+     398:	de 4f       	sbci	r29, 0xFE	; 254
+     39a:	98 83       	st	Y, r25
+     39c:	c4 51       	subi	r28, 0x14	; 20
+     39e:	d1 40       	sbci	r29, 0x01	; 1
+loc(0x83);
+str("Down Town Cafe");
+loc(0x94);
+str("New Balance :-");
+loc(0xa5);
+num(m);
+     3a0:	ca 01       	movw	r24, r20
+     3a2:	cb 5d       	subi	r28, 0xDB	; 219
+     3a4:	de 4f       	sbci	r29, 0xFE	; 254
+     3a6:	48 83       	st	Y, r20
+     3a8:	c5 52       	subi	r28, 0x25	; 37
+     3aa:	d1 40       	sbci	r29, 0x01	; 1
+     3ac:	ca 5d       	subi	r28, 0xDA	; 218
+     3ae:	de 4f       	sbci	r29, 0xFE	; 254
+     3b0:	98 83       	st	Y, r25
+     3b2:	c6 52       	subi	r28, 0x26	; 38
+     3b4:	d1 40       	sbci	r29, 0x01	; 1
+/*for(i=0;i<=3;i++)             
+ {for(j=0;j<=3;j++)
+  {eeprom_write_byte((i*4)+j+240,g[i][j]);
+}}*/
+	
+loc(0x01);
+     3b6:	81 e0       	ldi	r24, 0x01	; 1
+     3b8:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     3bc:	8f e1       	ldi	r24, 0x1F	; 31
+     3be:	9e e4       	ldi	r25, 0x4E	; 78
+     3c0:	01 97       	sbiw	r24, 0x01	; 1
+     3c2:	f1 f7       	brne	.-4      	; 0x3c0 <main+0x104>
+     3c4:	00 c0       	rjmp	.+0      	; 0x3c6 <main+0x10a>
+     3c6:	00 00       	nop
+_delay_ms(10);
+loc(0x83);
+     3c8:	83 e8       	ldi	r24, 0x83	; 131
+     3ca:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Down Town Cafe");
+     3ce:	80 e6       	ldi	r24, 0x60	; 96
+     3d0:	90 e0       	ldi	r25, 0x00	; 0
+     3d2:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0x94);
+     3d6:	84 e9       	ldi	r24, 0x94	; 148
+     3d8:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Customer Service");
+     3dc:	8f e6       	ldi	r24, 0x6F	; 111
+     3de:	90 e0       	ldi	r25, 0x00	; 0
+     3e0:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0xd4);
+     3e4:	84 ed       	ldi	r24, 0xD4	; 212
+     3e6:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Admin login");
+     3ea:	80 e8       	ldi	r24, 0x80	; 128
+     3ec:	90 e0       	ldi	r25, 0x00	; 0
+     3ee:	0e 94 22 01 	call	0x244	; 0x244 <str>
+     3f2:	2f ef       	ldi	r18, 0xFF	; 255
+     3f4:	30 e7       	ldi	r19, 0x70	; 112
+     3f6:	42 e0       	ldi	r20, 0x02	; 2
+     3f8:	21 50       	subi	r18, 0x01	; 1
+     3fa:	30 40       	sbci	r19, 0x00	; 0
+     3fc:	40 40       	sbci	r20, 0x00	; 0
+     3fe:	e1 f7       	brne	.-8      	; 0x3f8 <main+0x13c>
+     400:	00 c0       	rjmp	.+0      	; 0x402 <main+0x146>
+     402:	00 00       	nop
+_delay_ms(100);
+
+int q;
+q=keypad();
+     404:	0e 94 41 00 	call	0x82	; 0x82 <keypad>
+     408:	90 e0       	ldi	r25, 0x00	; 0
+if(q==22)
+     40a:	86 31       	cpi	r24, 0x16	; 22
+     40c:	91 05       	cpc	r25, r1
+     40e:	09 f0       	breq	.+2      	; 0x412 <main+0x156>
+     410:	02 c4       	rjmp	.+2052   	; 0xc16 <__stack+0x7b7>
+      {loc(0x01);
+     412:	81 e0       	ldi	r24, 0x01	; 1
+     414:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+     418:	8f e1       	ldi	r24, 0x1F	; 31
+     41a:	9e e4       	ldi	r25, 0x4E	; 78
+     41c:	01 97       	sbiw	r24, 0x01	; 1
+     41e:	f1 f7       	brne	.-4      	; 0x41c <main+0x160>
+     420:	00 c0       	rjmp	.+0      	; 0x422 <main+0x166>
+     422:	00 00       	nop
+      _delay_ms(10);
+	  loc(0x83);
+     424:	83 e8       	ldi	r24, 0x83	; 131
+     426:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+      str("Down Town Cafe");
+     42a:	80 e6       	ldi	r24, 0x60	; 96
+     42c:	90 e0       	ldi	r25, 0x00	; 0
+     42e:	0e 94 22 01 	call	0x244	; 0x244 <str>
+       loc(0x94);
+     432:	84 e9       	ldi	r24, 0x94	; 148
+     434:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+       str("Welcome Sir");
+     438:	8c e8       	ldi	r24, 0x8C	; 140
+     43a:	90 e0       	ldi	r25, 0x00	; 0
+     43c:	0e 94 22 01 	call	0x244	; 0x244 <str>
+       loc(0xd4);
+     440:	84 ed       	ldi	r24, 0xD4	; 212
+     442:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+       str("Enter Password:-");
+     446:	88 e9       	ldi	r24, 0x98	; 152
+     448:	90 e0       	ldi	r25, 0x00	; 0
+     44a:	0e 94 22 01 	call	0x244	; 0x244 <str>
+     44e:	8e 01       	movw	r16, r28
+     450:	03 50       	subi	r16, 0x03	; 3
+     452:	1f 4f       	sbci	r17, 0xFF	; 255
+     454:	c3 5e       	subi	r28, 0xE3	; 227
+     456:	de 4f       	sbci	r29, 0xFE	; 254
+     458:	e8 80       	ld	r14, Y
+     45a:	f9 80       	ldd	r15, Y+1	; 0x01
+     45c:	cd 51       	subi	r28, 0x1D	; 29
+     45e:	d1 40       	sbci	r29, 0x01	; 1
+	   
+    for(i=0;i<=3;i++)
+     {x=keypad();
+     460:	0e 94 41 00 	call	0x82	; 0x82 <keypad>
+      d[i]=x;
+     464:	d8 01       	movw	r26, r16
+     466:	8d 93       	st	X+, r24
+     468:	8d 01       	movw	r16, r26
+	  str("*");
+     46a:	89 ea       	ldi	r24, 0xA9	; 169
+     46c:	90 e0       	ldi	r25, 0x00	; 0
+     46e:	0e 94 22 01 	call	0x244	; 0x244 <str>
+       loc(0x94);
+       str("Welcome Sir");
+       loc(0xd4);
+       str("Enter Password:-");
+	   
+    for(i=0;i<=3;i++)
+     472:	0e 15       	cp	r16, r14
+     474:	1f 05       	cpc	r17, r15
+     476:	a1 f7       	brne	.-24     	; 0x460 <__stack+0x1>
+     478:	ef e5       	ldi	r30, 0x5F	; 95
+     47a:	fa ee       	ldi	r31, 0xEA	; 234
+     47c:	31 97       	sbiw	r30, 0x01	; 1
+     47e:	f1 f7       	brne	.-4      	; 0x47c <__stack+0x1d>
+     480:	00 c0       	rjmp	.+0      	; 0x482 <__stack+0x23>
+     482:	00 00       	nop
+	  str("*");
+     }
+	 _delay_ms(30);
+z=0;
+    for(j=0;j<=3;j++)
+      {if(c[j]!=d[j])
+     484:	c3 50       	subi	r28, 0x03	; 3
+     486:	df 4f       	sbci	r29, 0xFF	; 255
+     488:	88 81       	ld	r24, Y
+     48a:	cd 5f       	subi	r28, 0xFD	; 253
+     48c:	d0 40       	sbci	r29, 0x00	; 0
+     48e:	88 23       	and	r24, r24
+     490:	a9 f4       	brne	.+42     	; 0x4bc <__stack+0x5d>
+     492:	c2 50       	subi	r28, 0x02	; 2
+     494:	df 4f       	sbci	r29, 0xFF	; 255
+     496:	88 81       	ld	r24, Y
+     498:	ce 5f       	subi	r28, 0xFE	; 254
+     49a:	d0 40       	sbci	r29, 0x00	; 0
+     49c:	88 23       	and	r24, r24
+     49e:	71 f4       	brne	.+28     	; 0x4bc <__stack+0x5d>
+     4a0:	c1 50       	subi	r28, 0x01	; 1
+     4a2:	df 4f       	sbci	r29, 0xFF	; 255
+     4a4:	88 81       	ld	r24, Y
+     4a6:	cf 5f       	subi	r28, 0xFF	; 255
+     4a8:	d0 40       	sbci	r29, 0x00	; 0
+     4aa:	88 23       	and	r24, r24
+     4ac:	39 f4       	brne	.+14     	; 0x4bc <__stack+0x5d>
+     4ae:	c0 50       	subi	r28, 0x00	; 0
+     4b0:	df 4f       	sbci	r29, 0xFF	; 255
+     4b2:	88 81       	ld	r24, Y
+     4b4:	c0 50       	subi	r28, 0x00	; 0
+     4b6:	d1 40       	sbci	r29, 0x01	; 1
+     4b8:	88 23       	and	r24, r24
+     4ba:	09 f1       	breq	.+66     	; 0x4fe <__stack+0x9f>
+	   {z=1;
+	   break;
+	   }
+      }
+if(z==1)
+  {loc(0x01);
+     4bc:	81 e0       	ldi	r24, 0x01	; 1
+     4be:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+     4c2:	8f e1       	ldi	r24, 0x1F	; 31
+     4c4:	9e e4       	ldi	r25, 0x4E	; 78
+     4c6:	01 97       	sbiw	r24, 0x01	; 1
+     4c8:	f1 f7       	brne	.-4      	; 0x4c6 <__stack+0x67>
+     4ca:	00 c0       	rjmp	.+0      	; 0x4cc <__stack+0x6d>
+     4cc:	00 00       	nop
+  _delay_ms(10);
+  loc(0x83);
+     4ce:	83 e8       	ldi	r24, 0x83	; 131
+     4d0:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+  str("Down Town Cafe");
+     4d4:	80 e6       	ldi	r24, 0x60	; 96
+     4d6:	90 e0       	ldi	r25, 0x00	; 0
+     4d8:	0e 94 22 01 	call	0x244	; 0x244 <str>
+  loc(0x94);
+     4dc:	84 e9       	ldi	r24, 0x94	; 148
+     4de:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+  str("Incorrect Password");
+     4e2:	8b ea       	ldi	r24, 0xAB	; 171
+     4e4:	90 e0       	ldi	r25, 0x00	; 0
+     4e6:	0e 94 22 01 	call	0x244	; 0x244 <str>
+     4ea:	2f ef       	ldi	r18, 0xFF	; 255
+     4ec:	31 ee       	ldi	r19, 0xE1	; 225
+     4ee:	44 e0       	ldi	r20, 0x04	; 4
+     4f0:	21 50       	subi	r18, 0x01	; 1
+     4f2:	30 40       	sbci	r19, 0x00	; 0
+     4f4:	40 40       	sbci	r20, 0x00	; 0
+     4f6:	e1 f7       	brne	.-8      	; 0x4f0 <__stack+0x91>
+     4f8:	00 c0       	rjmp	.+0      	; 0x4fa <__stack+0x9b>
+     4fa:	00 00       	nop
+     4fc:	5c cf       	rjmp	.-328    	; 0x3b6 <main+0xfa>
+  {while(1)
+    {while(1)
+  {loc(0x01);
+  _delay_ms(10);
+  loc(0x83);
+  str("Down Town Cafe");
+     4fe:	0f 2e       	mov	r0, r31
+     500:	f0 e6       	ldi	r31, 0x60	; 96
+     502:	8f 2e       	mov	r8, r31
+     504:	f0 e0       	ldi	r31, 0x00	; 0
+     506:	9f 2e       	mov	r9, r31
+     508:	f0 2d       	mov	r31, r0
+
+for(i=1;i<=20;i++)              /*match the card in data*/
+ {y=0;
+  for(j=0;j<=3;j++)
+   {int l=eeprom_read_byte((i*12)+j);
+if(l!=b[0][j])
+     50a:	0f 2e       	mov	r0, r31
+     50c:	fd e0       	ldi	r31, 0x0D	; 13
+     50e:	af 2e       	mov	r10, r31
+     510:	bb 24       	eor	r11, r11
+     512:	f0 2d       	mov	r31, r0
+     514:	ac 0e       	add	r10, r28
+     516:	bd 1e       	adc	r11, r29
+{loc(0x01);
+_delay_ms(10);
+loc(0x83);
+str("Down Town Cafe");
+loc(0x94);
+str("Enter Amount");
+     518:	0f 2e       	mov	r0, r31
+     51a:	f3 ee       	ldi	r31, 0xE3	; 227
+     51c:	2f 2e       	mov	r2, r31
+     51e:	f0 e0       	ldi	r31, 0x00	; 0
+     520:	3f 2e       	mov	r3, r31
+     522:	f0 2d       	mov	r31, r0
+  }
+ 
+  else if(z==0)
+  {while(1)
+    {while(1)
+  {loc(0x01);
+     524:	81 e0       	ldi	r24, 0x01	; 1
+     526:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+     52a:	8f e1       	ldi	r24, 0x1F	; 31
+     52c:	9e e4       	ldi	r25, 0x4E	; 78
+     52e:	01 97       	sbiw	r24, 0x01	; 1
+     530:	f1 f7       	brne	.-4      	; 0x52e <__stack+0xcf>
+     532:	00 c0       	rjmp	.+0      	; 0x534 <__stack+0xd5>
+     534:	00 00       	nop
+  _delay_ms(10);
+  loc(0x83);
+     536:	83 e8       	ldi	r24, 0x83	; 131
+     538:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+  str("Down Town Cafe");
+     53c:	c4 01       	movw	r24, r8
+     53e:	0e 94 22 01 	call	0x244	; 0x244 <str>
+  loc(0x94);
+     542:	84 e9       	ldi	r24, 0x94	; 148
+     544:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+  str("Add Money");
+     548:	8e eb       	ldi	r24, 0xBE	; 190
+     54a:	90 e0       	ldi	r25, 0x00	; 0
+     54c:	0e 94 22 01 	call	0x244	; 0x244 <str>
+  loc(0xd4);
+     550:	84 ed       	ldi	r24, 0xD4	; 212
+     552:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+  str("Add New card");
+     556:	88 ec       	ldi	r24, 0xC8	; 200
+     558:	90 e0       	ldi	r25, 0x00	; 0
+     55a:	0e 94 22 01 	call	0x244	; 0x244 <str>
+  
+  X=keypad();
+     55e:	0e 94 41 00 	call	0x82	; 0x82 <keypad>
+     562:	90 e0       	ldi	r25, 0x00	; 0
+
+if(X==11)
+     564:	8b 30       	cpi	r24, 0x0B	; 11
+     566:	91 05       	cpc	r25, r1
+     568:	09 f0       	breq	.+2      	; 0x56c <__stack+0x10d>
+     56a:	72 c2       	rjmp	.+1252   	; 0xa50 <__stack+0x5f1>
+{loc(0x01);/*to read card*/
+     56c:	81 e0       	ldi	r24, 0x01	; 1
+     56e:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+     572:	af e1       	ldi	r26, 0x1F	; 31
+     574:	be e4       	ldi	r27, 0x4E	; 78
+     576:	11 97       	sbiw	r26, 0x01	; 1
+     578:	f1 f7       	brne	.-4      	; 0x576 <__stack+0x117>
+     57a:	00 c0       	rjmp	.+0      	; 0x57c <__stack+0x11d>
+     57c:	00 00       	nop
+_delay_ms(10);
+loc(0x83);
+     57e:	83 e8       	ldi	r24, 0x83	; 131
+     580:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Down Town Cafe");
+     584:	c4 01       	movw	r24, r8
+     586:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0x94);
+     58a:	84 e9       	ldi	r24, 0x94	; 148
+     58c:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Insert Card");
+     590:	85 ed       	ldi	r24, 0xD5	; 213
+     592:	90 e0       	ldi	r25, 0x00	; 0
+     594:	0e 94 22 01 	call	0x244	; 0x244 <str>
+     598:	c9 5e       	subi	r28, 0xE9	; 233
+     59a:	de 4f       	sbci	r29, 0xFE	; 254
+     59c:	e8 80       	ld	r14, Y
+     59e:	c7 51       	subi	r28, 0x17	; 23
+     5a0:	d1 40       	sbci	r29, 0x01	; 1
+     5a2:	c8 5e       	subi	r28, 0xE8	; 232
+     5a4:	de 4f       	sbci	r29, 0xFE	; 254
+     5a6:	f8 80       	ld	r15, Y
+     5a8:	c8 51       	subi	r28, 0x18	; 24
+     5aa:	d1 40       	sbci	r29, 0x01	; 1
+unsigned char keypad();
+void ini();   /*rfid*/
+void send(char send);
+char rec(void);
+
+void main() 
+     5ac:	8e 01       	movw	r16, r28
+     5ae:	0b 5f       	subi	r16, 0xFB	; 251
+     5b0:	1f 4f       	sbci	r17, 0xFF	; 255
+     5b2:	cd 5e       	subi	r28, 0xED	; 237
+     5b4:	de 4f       	sbci	r29, 0xFE	; 254
+     5b6:	48 80       	ld	r4, Y
+     5b8:	c3 51       	subi	r28, 0x13	; 19
+     5ba:	d1 40       	sbci	r29, 0x01	; 1
+     5bc:	cc 5e       	subi	r28, 0xEC	; 236
+     5be:	de 4f       	sbci	r29, 0xFE	; 254
+     5c0:	68 80       	ld	r6, Y
+     5c2:	c4 51       	subi	r28, 0x14	; 20
+     5c4:	d1 40       	sbci	r29, 0x01	; 1
+loc(0x94);
+str("Insert Card");
+
+for(i=0;i<=3;i++)                
+{
+x=keypad();
+     5c6:	0e 94 41 00 	call	0x82	; 0x82 <keypad>
+a[0][i]=x;
+     5ca:	f7 01       	movw	r30, r14
+     5cc:	81 93       	st	Z+, r24
+     5ce:	7f 01       	movw	r14, r30
+str(".");
+     5d0:	84 2d       	mov	r24, r4
+     5d2:	96 2d       	mov	r25, r6
+     5d4:	0e 94 22 01 	call	0x244	; 0x244 <str>
+     5d8:	8f e1       	ldi	r24, 0x1F	; 31
+     5da:	9e e4       	ldi	r25, 0x4E	; 78
+     5dc:	01 97       	sbiw	r24, 0x01	; 1
+     5de:	f1 f7       	brne	.-4      	; 0x5dc <__stack+0x17d>
+     5e0:	00 c0       	rjmp	.+0      	; 0x5e2 <__stack+0x183>
+     5e2:	00 00       	nop
+loc(0x83);
+str("Down Town Cafe");
+loc(0x94);
+str("Insert Card");
+
+for(i=0;i<=3;i++)                
+     5e4:	e0 16       	cp	r14, r16
+     5e6:	f1 06       	cpc	r15, r17
+     5e8:	71 f7       	brne	.-36     	; 0x5c6 <__stack+0x167>
+     5ea:	ee 24       	eor	r14, r14
+     5ec:	ff 24       	eor	r15, r15
+     5ee:	00 e0       	ldi	r16, 0x00	; 0
+     5f0:	10 e0       	ldi	r17, 0x00	; 0
+str(".");
+_delay_ms(10);
+}
+
+
+for(i=0;i<=20;i++)              /*match the card in data*/
+     5f2:	66 24       	eor	r6, r6
+     5f4:	77 24       	eor	r7, r7
+     5f6:	01 c0       	rjmp	.+2      	; 0x5fa <__stack+0x19b>
+     5f8:	83 01       	movw	r16, r6
+ {y=0;
+  for(j=0;j<=3;j++)
+   {int l=eeprom_read_byte((i*12)+j);
+     5fa:	c7 01       	movw	r24, r14
+     5fc:	88 0f       	add	r24, r24
+     5fe:	99 1f       	adc	r25, r25
+     600:	8e 0d       	add	r24, r14
+     602:	9f 1d       	adc	r25, r15
+     604:	88 0f       	add	r24, r24
+     606:	99 1f       	adc	r25, r25
+     608:	88 0f       	add	r24, r24
+     60a:	99 1f       	adc	r25, r25
+     60c:	80 0f       	add	r24, r16
+     60e:	91 1f       	adc	r25, r17
+     610:	0e 94 7c 09 	call	0x12f8	; 0x12f8 <__eerd_byte_m16>
+if(l!=a[0][j])
+     614:	f6 01       	movw	r30, r12
+     616:	e0 0f       	add	r30, r16
+     618:	f1 1f       	adc	r31, r17
+     61a:	20 81       	ld	r18, Z
+     61c:	30 e0       	ldi	r19, 0x00	; 0
+
+
+for(i=0;i<=20;i++)              /*match the card in data*/
+ {y=0;
+  for(j=0;j<=3;j++)
+   {int l=eeprom_read_byte((i*12)+j);
+     61e:	90 e0       	ldi	r25, 0x00	; 0
+if(l!=a[0][j])
+     620:	28 17       	cp	r18, r24
+     622:	39 07       	cpc	r19, r25
+     624:	31 f4       	brne	.+12     	; 0x632 <__stack+0x1d3>
+}
+
+
+for(i=0;i<=20;i++)              /*match the card in data*/
+ {y=0;
+  for(j=0;j<=3;j++)
+     626:	0f 5f       	subi	r16, 0xFF	; 255
+     628:	1f 4f       	sbci	r17, 0xFF	; 255
+     62a:	04 30       	cpi	r16, 0x04	; 4
+     62c:	11 05       	cpc	r17, r1
+     62e:	2c f3       	brlt	.-54     	; 0x5fa <__stack+0x19b>
+     630:	08 c0       	rjmp	.+16     	; 0x642 <__stack+0x1e3>
+str(".");
+_delay_ms(10);
+}
+
+
+for(i=0;i<=20;i++)              /*match the card in data*/
+     632:	08 94       	sec
+     634:	e1 1c       	adc	r14, r1
+     636:	f1 1c       	adc	r15, r1
+     638:	95 e1       	ldi	r25, 0x15	; 21
+     63a:	e9 16       	cp	r14, r25
+     63c:	f1 04       	cpc	r15, r1
+     63e:	e4 f2       	brlt	.-72     	; 0x5f8 <__stack+0x199>
+     640:	e7 c1       	rjmp	.+974    	; 0xa10 <__stack+0x5b1>
+	if(y!=1)
+	 {break;}
+  }
+
+if(y==0)
+{loc(0x01);
+     642:	81 e0       	ldi	r24, 0x01	; 1
+     644:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+     648:	af e1       	ldi	r26, 0x1F	; 31
+     64a:	be e4       	ldi	r27, 0x4E	; 78
+     64c:	11 97       	sbiw	r26, 0x01	; 1
+     64e:	f1 f7       	brne	.-4      	; 0x64c <__stack+0x1ed>
+     650:	00 c0       	rjmp	.+0      	; 0x652 <__stack+0x1f3>
+     652:	00 00       	nop
+_delay_ms(10);
+loc(0x83);
+     654:	83 e8       	ldi	r24, 0x83	; 131
+     656:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Down Town Cafe");
+     65a:	c4 01       	movw	r24, r8
+     65c:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0x94);
+     660:	84 e9       	ldi	r24, 0x94	; 148
+     662:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Enter Amount");
+     666:	c1 01       	movw	r24, r2
+     668:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0xc4);
+     66c:	84 ec       	ldi	r24, 0xC4	; 196
+     66e:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("*upto 5000*");
+     672:	80 ef       	ldi	r24, 0xF0	; 240
+     674:	90 e0       	ldi	r25, 0x00	; 0
+     676:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0xd4);
+     67a:	84 ed       	ldi	r24, 0xD4	; 212
+     67c:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Add");
+     680:	8c ef       	ldi	r24, 0xFC	; 252
+     682:	90 e0       	ldi	r25, 0x00	; 0
+     684:	0e 94 22 01 	call	0x244	; 0x244 <str>
+
+int I,K;
+for(I=0,K=0xa1;I<=4&&K<=0xa6;I++,K++)
+     688:	0f 2e       	mov	r0, r31
+     68a:	f1 ea       	ldi	r31, 0xA1	; 161
+     68c:	6f 2e       	mov	r6, r31
+     68e:	77 24       	eor	r7, r7
+     690:	f0 2d       	mov	r31, r0
+     692:	00 e0       	ldi	r16, 0x00	; 0
+     694:	10 e0       	ldi	r17, 0x00	; 0
+{Y=keypad();
+     696:	0e 94 41 00 	call	0x82	; 0x82 <keypad>
+     69a:	48 2e       	mov	r4, r24
+     69c:	55 24       	eor	r5, r5
+ if(Y!=22)
+     69e:	b6 e1       	ldi	r27, 0x16	; 22
+     6a0:	4b 16       	cp	r4, r27
+     6a2:	51 04       	cpc	r5, r1
+     6a4:	71 f0       	breq	.+28     	; 0x6c2 <__stack+0x263>
+unsigned char keypad();
+void ini();   /*rfid*/
+void send(char send);
+char rec(void);
+
+void main() 
+     6a6:	e1 e0       	ldi	r30, 0x01	; 1
+     6a8:	f1 e0       	ldi	r31, 0x01	; 1
+     6aa:	ec 0f       	add	r30, r28
+     6ac:	fd 1f       	adc	r31, r29
+     6ae:	e0 0f       	add	r30, r16
+     6b0:	f1 1f       	adc	r31, r17
+
+int I,K;
+for(I=0,K=0xa1;I<=4&&K<=0xa6;I++,K++)
+{Y=keypad();
+ if(Y!=22)
+  {e[0][I]=Y;
+     6b2:	80 83       	st	Z, r24
+   loc(K);
+     6b4:	86 2d       	mov	r24, r6
+     6b6:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+   num(Y);	
+     6ba:	c2 01       	movw	r24, r4
+     6bc:	0e 94 31 01 	call	0x262	; 0x262 <num>
+     6c0:	99 c1       	rjmp	.+818    	; 0x9f4 <__stack+0x595>
+	}
+ else if(Y==22&&i==0)		
+     6c2:	e1 14       	cp	r14, r1
+     6c4:	f1 04       	cpc	r15, r1
+     6c6:	31 f4       	brne	.+12     	; 0x6d4 <__stack+0x275>
+  {e[0][0]=0;}
+     6c8:	cf 5f       	subi	r28, 0xFF	; 255
+     6ca:	de 4f       	sbci	r29, 0xFE	; 254
+     6cc:	18 82       	st	Y, r1
+     6ce:	c1 50       	subi	r28, 0x01	; 1
+     6d0:	d1 40       	sbci	r29, 0x01	; 1
+     6d2:	90 c1       	rjmp	.+800    	; 0x9f4 <__stack+0x595>
+ else if(Y==22)
+  {loc(K);
+     6d4:	86 2d       	mov	r24, r6
+     6d6:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+   str("/");
+     6da:	80 e0       	ldi	r24, 0x00	; 0
+     6dc:	91 e0       	ldi	r25, 0x01	; 1
+     6de:	0e 94 22 01 	call	0x244	; 0x244 <str>
+   loc(++K);
+     6e2:	86 2d       	mov	r24, r6
+     6e4:	8f 5f       	subi	r24, 0xFF	; 255
+     6e6:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+   str("-");
+     6ea:	82 e0       	ldi	r24, 0x02	; 2
+     6ec:	91 e0       	ldi	r25, 0x01	; 1
+     6ee:	0e 94 22 01 	call	0x244	; 0x244 <str>
+     6f2:	2f ef       	ldi	r18, 0xFF	; 255
+     6f4:	30 e7       	ldi	r19, 0x70	; 112
+     6f6:	42 e0       	ldi	r20, 0x02	; 2
+     6f8:	21 50       	subi	r18, 0x01	; 1
+     6fa:	30 40       	sbci	r19, 0x00	; 0
+     6fc:	40 40       	sbci	r20, 0x00	; 0
+     6fe:	e1 f7       	brne	.-8      	; 0x6f8 <__stack+0x299>
+     700:	00 c0       	rjmp	.+0      	; 0x702 <__stack+0x2a3>
+     702:	00 00       	nop
+   _delay_ms(100);
+   loc(0x01);
+     704:	81 e0       	ldi	r24, 0x01	; 1
+     706:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+     70a:	8f e1       	ldi	r24, 0x1F	; 31
+     70c:	9e e4       	ldi	r25, 0x4E	; 78
+     70e:	01 97       	sbiw	r24, 0x01	; 1
+     710:	f1 f7       	brne	.-4      	; 0x70e <__stack+0x2af>
+     712:	00 c0       	rjmp	.+0      	; 0x714 <__stack+0x2b5>
+     714:	00 00       	nop
+   _delay_ms(10);
+   loc(0x83);
+     716:	83 e8       	ldi	r24, 0x83	; 131
+     718:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+   str("Down Town Cafe");
+     71c:	c4 01       	movw	r24, r8
+     71e:	0e 94 22 01 	call	0x244	; 0x244 <str>
+   loc(0xd4);
+     722:	84 ed       	ldi	r24, 0xD4	; 212
+     724:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+   str("processing...");
+     728:	84 e0       	ldi	r24, 0x04	; 4
+     72a:	91 e0       	ldi	r25, 0x01	; 1
+     72c:	0e 94 22 01 	call	0x244	; 0x244 <str>
+     730:	2f ef       	ldi	r18, 0xFF	; 255
+     732:	31 ee       	ldi	r19, 0xE1	; 225
+     734:	44 e0       	ldi	r20, 0x04	; 4
+     736:	21 50       	subi	r18, 0x01	; 1
+     738:	30 40       	sbci	r19, 0x00	; 0
+     73a:	40 40       	sbci	r20, 0x00	; 0
+     73c:	e1 f7       	brne	.-8      	; 0x736 <__stack+0x2d7>
+     73e:	00 c0       	rjmp	.+0      	; 0x740 <__stack+0x2e1>
+     740:	00 00       	nop
+   _delay_ms(200);
+
+int w,r,t,m;
+if(I==4){w=1000;}
+     742:	04 30       	cpi	r16, 0x04	; 4
+     744:	11 05       	cpc	r17, r1
+     746:	51 f0       	breq	.+20     	; 0x75c <__stack+0x2fd>
+else if(I==3){w=100;}
+     748:	03 30       	cpi	r16, 0x03	; 3
+     74a:	11 05       	cpc	r17, r1
+     74c:	81 f0       	breq	.+32     	; 0x76e <__stack+0x30f>
+else if(I==2){w=10;}
+     74e:	02 30       	cpi	r16, 0x02	; 2
+     750:	11 05       	cpc	r17, r1
+     752:	b1 f0       	breq	.+44     	; 0x780 <__stack+0x321>
+else if(I==1){w=1;}
+     754:	01 30       	cpi	r16, 0x01	; 1
+     756:	11 05       	cpc	r17, r1
+     758:	21 f5       	brne	.+72     	; 0x7a2 <__stack+0x343>
+     75a:	1b c0       	rjmp	.+54     	; 0x792 <__stack+0x333>
+   loc(0xd4);
+   str("processing...");
+   _delay_ms(200);
+
+int w,r,t,m;
+if(I==4){w=1000;}
+     75c:	48 ee       	ldi	r20, 0xE8	; 232
+     75e:	53 e0       	ldi	r21, 0x03	; 3
+     760:	cf 5d       	subi	r28, 0xDF	; 223
+     762:	de 4f       	sbci	r29, 0xFE	; 254
+     764:	59 83       	std	Y+1, r21	; 0x01
+     766:	48 83       	st	Y, r20
+     768:	c1 52       	subi	r28, 0x21	; 33
+     76a:	d1 40       	sbci	r29, 0x01	; 1
+     76c:	1a c0       	rjmp	.+52     	; 0x7a2 <__stack+0x343>
+else if(I==3){w=100;}
+     76e:	64 e6       	ldi	r22, 0x64	; 100
+     770:	70 e0       	ldi	r23, 0x00	; 0
+     772:	cf 5d       	subi	r28, 0xDF	; 223
+     774:	de 4f       	sbci	r29, 0xFE	; 254
+     776:	79 83       	std	Y+1, r23	; 0x01
+     778:	68 83       	st	Y, r22
+     77a:	c1 52       	subi	r28, 0x21	; 33
+     77c:	d1 40       	sbci	r29, 0x01	; 1
+     77e:	11 c0       	rjmp	.+34     	; 0x7a2 <__stack+0x343>
+else if(I==2){w=10;}
+     780:	8a e0       	ldi	r24, 0x0A	; 10
+     782:	90 e0       	ldi	r25, 0x00	; 0
+     784:	cf 5d       	subi	r28, 0xDF	; 223
+     786:	de 4f       	sbci	r29, 0xFE	; 254
+     788:	99 83       	std	Y+1, r25	; 0x01
+     78a:	88 83       	st	Y, r24
+     78c:	c1 52       	subi	r28, 0x21	; 33
+     78e:	d1 40       	sbci	r29, 0x01	; 1
+     790:	08 c0       	rjmp	.+16     	; 0x7a2 <__stack+0x343>
+else if(I==1){w=1;}
+     792:	a1 e0       	ldi	r26, 0x01	; 1
+     794:	b0 e0       	ldi	r27, 0x00	; 0
+     796:	cf 5d       	subi	r28, 0xDF	; 223
+     798:	de 4f       	sbci	r29, 0xFE	; 254
+     79a:	b9 83       	std	Y+1, r27	; 0x01
+     79c:	a8 83       	st	Y, r26
+     79e:	c1 52       	subi	r28, 0x21	; 33
+     7a0:	d1 40       	sbci	r29, 0x01	; 1
+	
+	for(j=0;j<=3;j++)
+	 {f[0][j]=eeprom_read_byte(240+(i*4)+j);
+     7a2:	87 01       	movw	r16, r14
+     7a4:	04 5c       	subi	r16, 0xC4	; 196
+     7a6:	1f 4f       	sbci	r17, 0xFF	; 255
+     7a8:	00 0f       	add	r16, r16
+     7aa:	11 1f       	adc	r17, r17
+     7ac:	00 0f       	add	r16, r16
+     7ae:	11 1f       	adc	r17, r17
+
+int w,r,t,m;
+if(I==4){w=1000;}
+else if(I==3){w=100;}
+else if(I==2){w=10;}
+else if(I==1){w=1;}
+     7b0:	0f 2e       	mov	r0, r31
+     7b2:	f5 e0       	ldi	r31, 0x05	; 5
+     7b4:	6f 2e       	mov	r6, r31
+     7b6:	f1 e0       	ldi	r31, 0x01	; 1
+     7b8:	7f 2e       	mov	r7, r31
+     7ba:	f0 2d       	mov	r31, r0
+     7bc:	6c 0e       	add	r6, r28
+     7be:	7d 1e       	adc	r7, r29
+	
+	for(j=0;j<=3;j++)
+	 {f[0][j]=eeprom_read_byte(240+(i*4)+j);
+     7c0:	c8 01       	movw	r24, r16
+     7c2:	0e 94 7c 09 	call	0x12f8	; 0x12f8 <__eerd_byte_m16>
+     7c6:	f3 01       	movw	r30, r6
+     7c8:	81 93       	st	Z+, r24
+     7ca:	3f 01       	movw	r6, r30
+     7cc:	0f 5f       	subi	r16, 0xFF	; 255
+     7ce:	1f 4f       	sbci	r17, 0xFF	; 255
+if(I==4){w=1000;}
+else if(I==3){w=100;}
+else if(I==2){w=10;}
+else if(I==1){w=1;}
+	
+	for(j=0;j<=3;j++)
+     7d0:	c7 5e       	subi	r28, 0xE7	; 231
+     7d2:	de 4f       	sbci	r29, 0xFE	; 254
+     7d4:	28 81       	ld	r18, Y
+     7d6:	39 81       	ldd	r19, Y+1	; 0x01
+     7d8:	c9 51       	subi	r28, 0x19	; 25
+     7da:	d1 40       	sbci	r29, 0x01	; 1
+     7dc:	e2 17       	cp	r30, r18
+     7de:	f3 07       	cpc	r31, r19
+     7e0:	79 f7       	brne	.-34     	; 0x7c0 <__stack+0x361>
+	 {f[0][j]=eeprom_read_byte(240+(i*4)+j);
+	 }
+	
+	r=w*e[0][0]+w/10*e[0][1]+w/100*e[0][2]+w/1000*e[0][3];
+     7e2:	cf 5d       	subi	r28, 0xDF	; 223
+     7e4:	de 4f       	sbci	r29, 0xFE	; 254
+     7e6:	88 81       	ld	r24, Y
+     7e8:	99 81       	ldd	r25, Y+1	; 0x01
+     7ea:	c1 52       	subi	r28, 0x21	; 33
+     7ec:	d1 40       	sbci	r29, 0x01	; 1
+     7ee:	6a e0       	ldi	r22, 0x0A	; 10
+     7f0:	70 e0       	ldi	r23, 0x00	; 0
+     7f2:	0e 94 55 09 	call	0x12aa	; 0x12aa <__divmodhi4>
+     7f6:	ce 5f       	subi	r28, 0xFE	; 254
+     7f8:	de 4f       	sbci	r29, 0xFE	; 254
+     7fa:	88 81       	ld	r24, Y
+     7fc:	c2 50       	subi	r28, 0x02	; 2
+     7fe:	d1 40       	sbci	r29, 0x01	; 1
+     800:	90 e0       	ldi	r25, 0x00	; 0
+     802:	68 9f       	mul	r22, r24
+     804:	f0 01       	movw	r30, r0
+     806:	69 9f       	mul	r22, r25
+     808:	f0 0d       	add	r31, r0
+     80a:	78 9f       	mul	r23, r24
+     80c:	f0 0d       	add	r31, r0
+     80e:	11 24       	eor	r1, r1
+     810:	cf 5d       	subi	r28, 0xDF	; 223
+     812:	de 4f       	sbci	r29, 0xFE	; 254
+     814:	88 81       	ld	r24, Y
+     816:	99 81       	ldd	r25, Y+1	; 0x01
+     818:	c1 52       	subi	r28, 0x21	; 33
+     81a:	d1 40       	sbci	r29, 0x01	; 1
+     81c:	68 ee       	ldi	r22, 0xE8	; 232
+     81e:	73 e0       	ldi	r23, 0x03	; 3
+     820:	0e 94 55 09 	call	0x12aa	; 0x12aa <__divmodhi4>
+     824:	cc 5f       	subi	r28, 0xFC	; 252
+     826:	de 4f       	sbci	r29, 0xFE	; 254
+     828:	28 81       	ld	r18, Y
+     82a:	c4 50       	subi	r28, 0x04	; 4
+     82c:	d1 40       	sbci	r29, 0x01	; 1
+     82e:	30 e0       	ldi	r19, 0x00	; 0
+     830:	62 9f       	mul	r22, r18
+     832:	c0 01       	movw	r24, r0
+     834:	63 9f       	mul	r22, r19
+     836:	90 0d       	add	r25, r0
+     838:	72 9f       	mul	r23, r18
+     83a:	90 0d       	add	r25, r0
+     83c:	11 24       	eor	r1, r1
+     83e:	e8 0f       	add	r30, r24
+     840:	f9 1f       	adc	r31, r25
+     842:	cf 5f       	subi	r28, 0xFF	; 255
+     844:	de 4f       	sbci	r29, 0xFE	; 254
+     846:	28 81       	ld	r18, Y
+     848:	c1 50       	subi	r28, 0x01	; 1
+     84a:	d1 40       	sbci	r29, 0x01	; 1
+     84c:	30 e0       	ldi	r19, 0x00	; 0
+     84e:	cf 5d       	subi	r28, 0xDF	; 223
+     850:	de 4f       	sbci	r29, 0xFE	; 254
+     852:	48 81       	ld	r20, Y
+     854:	59 81       	ldd	r21, Y+1	; 0x01
+     856:	c1 52       	subi	r28, 0x21	; 33
+     858:	d1 40       	sbci	r29, 0x01	; 1
+     85a:	42 9f       	mul	r20, r18
+     85c:	c0 01       	movw	r24, r0
+     85e:	43 9f       	mul	r20, r19
+     860:	90 0d       	add	r25, r0
+     862:	52 9f       	mul	r21, r18
+     864:	90 0d       	add	r25, r0
+     866:	11 24       	eor	r1, r1
+     868:	e8 0f       	add	r30, r24
+     86a:	f9 1f       	adc	r31, r25
+     86c:	ca 01       	movw	r24, r20
+     86e:	64 e6       	ldi	r22, 0x64	; 100
+     870:	70 e0       	ldi	r23, 0x00	; 0
+     872:	0e 94 55 09 	call	0x12aa	; 0x12aa <__divmodhi4>
+     876:	cd 5f       	subi	r28, 0xFD	; 253
+     878:	de 4f       	sbci	r29, 0xFE	; 254
+     87a:	28 81       	ld	r18, Y
+     87c:	c3 50       	subi	r28, 0x03	; 3
+     87e:	d1 40       	sbci	r29, 0x01	; 1
+     880:	30 e0       	ldi	r19, 0x00	; 0
+     882:	62 9f       	mul	r22, r18
+     884:	c0 01       	movw	r24, r0
+     886:	63 9f       	mul	r22, r19
+     888:	90 0d       	add	r25, r0
+     88a:	72 9f       	mul	r23, r18
+     88c:	90 0d       	add	r25, r0
+     88e:	11 24       	eor	r1, r1
+     890:	8e 0f       	add	r24, r30
+     892:	9f 1f       	adc	r25, r31
+	t=1000*f[0][0]+100*f[0][1]+10*f[0][2]+1*f[0][3];
+     894:	cb 5f       	subi	r28, 0xFB	; 251
+     896:	de 4f       	sbci	r29, 0xFE	; 254
+     898:	48 81       	ld	r20, Y
+     89a:	c5 50       	subi	r28, 0x05	; 5
+     89c:	d1 40       	sbci	r29, 0x01	; 1
+     89e:	ca 5f       	subi	r28, 0xFA	; 250
+     8a0:	de 4f       	sbci	r29, 0xFE	; 254
+     8a2:	a8 81       	ld	r26, Y
+     8a4:	c6 50       	subi	r28, 0x06	; 6
+     8a6:	d1 40       	sbci	r29, 0x01	; 1
+     8a8:	c9 5f       	subi	r28, 0xF9	; 249
+     8aa:	de 4f       	sbci	r29, 0xFE	; 254
+     8ac:	e8 81       	ld	r30, Y
+     8ae:	c7 50       	subi	r28, 0x07	; 7
+     8b0:	d1 40       	sbci	r29, 0x01	; 1
+     8b2:	c8 5f       	subi	r28, 0xF8	; 248
+     8b4:	de 4f       	sbci	r29, 0xFE	; 254
+     8b6:	f8 81       	ld	r31, Y
+     8b8:	c8 50       	subi	r28, 0x08	; 8
+     8ba:	d1 40       	sbci	r29, 0x01	; 1
+	
+if(r<=5000)
+     8bc:	53 e1       	ldi	r21, 0x13	; 19
+     8be:	89 38       	cpi	r24, 0x89	; 137
+     8c0:	95 07       	cpc	r25, r21
+     8c2:	0c f0       	brlt	.+2      	; 0x8c6 <__stack+0x467>
+     8c4:	77 c0       	rjmp	.+238    	; 0x9b4 <__stack+0x555>
+	for(j=0;j<=3;j++)
+	 {f[0][j]=eeprom_read_byte(240+(i*4)+j);
+	 }
+	
+	r=w*e[0][0]+w/10*e[0][1]+w/100*e[0][2]+w/1000*e[0][3];
+	t=1000*f[0][0]+100*f[0][1]+10*f[0][2]+1*f[0][3];
+     8c6:	50 e0       	ldi	r21, 0x00	; 0
+     8c8:	28 ee       	ldi	r18, 0xE8	; 232
+     8ca:	33 e0       	ldi	r19, 0x03	; 3
+     8cc:	42 9f       	mul	r20, r18
+     8ce:	b0 01       	movw	r22, r0
+     8d0:	43 9f       	mul	r20, r19
+     8d2:	70 0d       	add	r23, r0
+     8d4:	52 9f       	mul	r21, r18
+     8d6:	70 0d       	add	r23, r0
+     8d8:	11 24       	eor	r1, r1
+     8da:	24 e6       	ldi	r18, 0x64	; 100
+     8dc:	a2 9f       	mul	r26, r18
+     8de:	90 01       	movw	r18, r0
+     8e0:	11 24       	eor	r1, r1
+     8e2:	ab 01       	movw	r20, r22
+     8e4:	42 0f       	add	r20, r18
+     8e6:	53 1f       	adc	r21, r19
+     8e8:	4f 0f       	add	r20, r31
+     8ea:	51 1d       	adc	r21, r1
+     8ec:	2a e0       	ldi	r18, 0x0A	; 10
+     8ee:	e2 9f       	mul	r30, r18
+     8f0:	90 01       	movw	r18, r0
+     8f2:	11 24       	eor	r1, r1
+     8f4:	24 0f       	add	r18, r20
+     8f6:	35 1f       	adc	r19, r21
+	
+if(r<=5000)
+{m=t+r;
+     8f8:	89 01       	movw	r16, r18
+     8fa:	08 0f       	add	r16, r24
+     8fc:	19 1f       	adc	r17, r25
+	
+loc(0x01);
+     8fe:	81 e0       	ldi	r24, 0x01	; 1
+     900:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+     904:	8f e1       	ldi	r24, 0x1F	; 31
+     906:	9e e4       	ldi	r25, 0x4E	; 78
+     908:	01 97       	sbiw	r24, 0x01	; 1
+     90a:	f1 f7       	brne	.-4      	; 0x908 <__stack+0x4a9>
+     90c:	00 c0       	rjmp	.+0      	; 0x90e <__stack+0x4af>
+     90e:	00 00       	nop
+_delay_ms(10);
+loc(0x83);
+     910:	83 e8       	ldi	r24, 0x83	; 131
+     912:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Down Town Cafe");
+     916:	c4 01       	movw	r24, r8
+     918:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0x94);
+     91c:	84 e9       	ldi	r24, 0x94	; 148
+     91e:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("New Balance :-");
+     922:	82 e1       	ldi	r24, 0x12	; 18
+     924:	91 e0       	ldi	r25, 0x01	; 1
+     926:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0xa5);
+     92a:	85 ea       	ldi	r24, 0xA5	; 165
+     92c:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+num(m);
+     930:	c8 01       	movw	r24, r16
+     932:	0e 94 31 01 	call	0x262	; 0x262 <num>
+     936:	cb 5d       	subi	r28, 0xDB	; 219
+     938:	de 4f       	sbci	r29, 0xFE	; 254
+     93a:	e8 81       	ld	r30, Y
+     93c:	c5 52       	subi	r28, 0x25	; 37
+     93e:	d1 40       	sbci	r29, 0x01	; 1
+     940:	ca 5d       	subi	r28, 0xDA	; 218
+     942:	de 4f       	sbci	r29, 0xFE	; 254
+     944:	f8 81       	ld	r31, Y
+     946:	c6 52       	subi	r28, 0x26	; 38
+     948:	d1 40       	sbci	r29, 0x01	; 1
+int M[4],k=3;
+while(m!=0)
+{ M[k]=m%10;
+     94a:	2a e0       	ldi	r18, 0x0A	; 10
+     94c:	30 e0       	ldi	r19, 0x00	; 0
+     94e:	c8 01       	movw	r24, r16
+loc(0x94);
+str("New Balance :-");
+loc(0xa5);
+num(m);
+int M[4],k=3;
+while(m!=0)
+     950:	07 c0       	rjmp	.+14     	; 0x960 <__stack+0x501>
+{ M[k]=m%10;
+     952:	b9 01       	movw	r22, r18
+     954:	0e 94 55 09 	call	0x12aa	; 0x12aa <__divmodhi4>
+     958:	92 93       	st	-Z, r25
+     95a:	82 93       	st	-Z, r24
+  k--;
+	m=m/10;
+     95c:	86 2f       	mov	r24, r22
+     95e:	97 2f       	mov	r25, r23
+loc(0x94);
+str("New Balance :-");
+loc(0xa5);
+num(m);
+int M[4],k=3;
+while(m!=0)
+     960:	00 97       	sbiw	r24, 0x00	; 0
+     962:	b9 f7       	brne	.-18     	; 0x952 <__stack+0x4f3>
+     964:	8e 01       	movw	r16, r28
+     966:	07 5f       	subi	r16, 0xF7	; 247
+     968:	1e 4f       	sbci	r17, 0xFE	; 254
+{ M[k]=m%10;
+  k--;
+	m=m/10;
+}
+for(j=0;j<=3;j++)
+{eeprom_write_byte((i*4)+j+240,M[j]);
+     96a:	ee 0c       	add	r14, r14
+     96c:	ff 1c       	adc	r15, r15
+     96e:	ee 0c       	add	r14, r14
+     970:	ff 1c       	adc	r15, r15
+     972:	a0 ef       	ldi	r26, 0xF0	; 240
+     974:	b0 e0       	ldi	r27, 0x00	; 0
+     976:	ea 0e       	add	r14, r26
+     978:	fb 1e       	adc	r15, r27
+     97a:	f8 01       	movw	r30, r16
+     97c:	60 81       	ld	r22, Z
+     97e:	0e 5f       	subi	r16, 0xFE	; 254
+     980:	1f 4f       	sbci	r17, 0xFF	; 255
+     982:	c7 01       	movw	r24, r14
+     984:	0e 94 84 09 	call	0x1308	; 0x1308 <__eewr_byte_m16>
+     988:	08 94       	sec
+     98a:	e1 1c       	adc	r14, r1
+     98c:	f1 1c       	adc	r15, r1
+while(m!=0)
+{ M[k]=m%10;
+  k--;
+	m=m/10;
+}
+for(j=0;j<=3;j++)
+     98e:	cd 5d       	subi	r28, 0xDD	; 221
+     990:	de 4f       	sbci	r29, 0xFE	; 254
+     992:	28 81       	ld	r18, Y
+     994:	39 81       	ldd	r19, Y+1	; 0x01
+     996:	c3 52       	subi	r28, 0x23	; 35
+     998:	d1 40       	sbci	r29, 0x01	; 1
+     99a:	02 17       	cp	r16, r18
+     99c:	13 07       	cpc	r17, r19
+     99e:	69 f7       	brne	.-38     	; 0x97a <__stack+0x51b>
+     9a0:	4f ef       	ldi	r20, 0xFF	; 255
+     9a2:	53 ec       	ldi	r21, 0xC3	; 195
+     9a4:	69 e0       	ldi	r22, 0x09	; 9
+     9a6:	41 50       	subi	r20, 0x01	; 1
+     9a8:	50 40       	sbci	r21, 0x00	; 0
+     9aa:	60 40       	sbci	r22, 0x00	; 0
+     9ac:	e1 f7       	brne	.-8      	; 0x9a6 <__stack+0x547>
+     9ae:	00 c0       	rjmp	.+0      	; 0x9b0 <__stack+0x551>
+     9b0:	00 00       	nop
+{eeprom_write_byte((i*4)+j+240,M[j]);
+}
+_delay_ms(400);
+break;
+     9b2:	b8 cd       	rjmp	.-1168   	; 0x524 <__stack+0xc5>
+}
+else
+{loc(0x01);
+     9b4:	81 e0       	ldi	r24, 0x01	; 1
+     9b6:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+     9ba:	8f e1       	ldi	r24, 0x1F	; 31
+     9bc:	9e e4       	ldi	r25, 0x4E	; 78
+     9be:	01 97       	sbiw	r24, 0x01	; 1
+     9c0:	f1 f7       	brne	.-4      	; 0x9be <__stack+0x55f>
+     9c2:	00 c0       	rjmp	.+0      	; 0x9c4 <__stack+0x565>
+     9c4:	00 00       	nop
+_delay_ms(10);
+loc(0x83);
+     9c6:	83 e8       	ldi	r24, 0x83	; 131
+     9c8:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Down Town Cafe");
+     9cc:	c4 01       	movw	r24, r8
+     9ce:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0x94);
+     9d2:	84 e9       	ldi	r24, 0x94	; 148
+     9d4:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Enter Valid Amount");
+     9d8:	81 e2       	ldi	r24, 0x21	; 33
+     9da:	91 e0       	ldi	r25, 0x01	; 1
+     9dc:	0e 94 22 01 	call	0x244	; 0x244 <str>
+     9e0:	2f ef       	ldi	r18, 0xFF	; 255
+     9e2:	32 e5       	ldi	r19, 0x52	; 82
+     9e4:	47 e0       	ldi	r20, 0x07	; 7
+     9e6:	21 50       	subi	r18, 0x01	; 1
+     9e8:	30 40       	sbci	r19, 0x00	; 0
+     9ea:	40 40       	sbci	r20, 0x00	; 0
+     9ec:	e1 f7       	brne	.-8      	; 0x9e6 <__stack+0x587>
+     9ee:	00 c0       	rjmp	.+0      	; 0x9f0 <__stack+0x591>
+     9f0:	00 00       	nop
+     9f2:	98 cd       	rjmp	.-1232   	; 0x524 <__stack+0xc5>
+str("*upto 5000*");
+loc(0xd4);
+str("Add");
+
+int I,K;
+for(I=0,K=0xa1;I<=4&&K<=0xa6;I++,K++)
+     9f4:	0f 5f       	subi	r16, 0xFF	; 255
+     9f6:	1f 4f       	sbci	r17, 0xFF	; 255
+     9f8:	05 30       	cpi	r16, 0x05	; 5
+     9fa:	11 05       	cpc	r17, r1
+     9fc:	09 f4       	brne	.+2      	; 0xa00 <__stack+0x5a1>
+     9fe:	92 cd       	rjmp	.-1244   	; 0x524 <__stack+0xc5>
+     a00:	08 94       	sec
+     a02:	61 1c       	adc	r6, r1
+     a04:	71 1c       	adc	r7, r1
+     a06:	06 30       	cpi	r16, 0x06	; 6
+     a08:	11 05       	cpc	r17, r1
+     a0a:	09 f0       	breq	.+2      	; 0xa0e <__stack+0x5af>
+     a0c:	44 ce       	rjmp	.-888    	; 0x696 <__stack+0x237>
+     a0e:	8a cd       	rjmp	.-1260   	; 0x524 <__stack+0xc5>
+}
+}
+}
+
+else
+{loc(0x01);
+     a10:	81 e0       	ldi	r24, 0x01	; 1
+     a12:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+     a16:	8f e1       	ldi	r24, 0x1F	; 31
+     a18:	9e e4       	ldi	r25, 0x4E	; 78
+     a1a:	01 97       	sbiw	r24, 0x01	; 1
+     a1c:	f1 f7       	brne	.-4      	; 0xa1a <__stack+0x5bb>
+     a1e:	00 c0       	rjmp	.+0      	; 0xa20 <__stack+0x5c1>
+     a20:	00 00       	nop
+_delay_ms(10);
+loc(0x83);
+     a22:	83 e8       	ldi	r24, 0x83	; 131
+     a24:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Down Town Cafe");
+     a28:	c4 01       	movw	r24, r8
+     a2a:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0x94);
+     a2e:	84 e9       	ldi	r24, 0x94	; 148
+     a30:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Invalid card");
+     a34:	84 e3       	ldi	r24, 0x34	; 52
+     a36:	91 e0       	ldi	r25, 0x01	; 1
+     a38:	0e 94 22 01 	call	0x244	; 0x244 <str>
+     a3c:	2f ef       	ldi	r18, 0xFF	; 255
+     a3e:	31 ee       	ldi	r19, 0xE1	; 225
+     a40:	44 e0       	ldi	r20, 0x04	; 4
+     a42:	21 50       	subi	r18, 0x01	; 1
+     a44:	30 40       	sbci	r19, 0x00	; 0
+     a46:	40 40       	sbci	r20, 0x00	; 0
+     a48:	e1 f7       	brne	.-8      	; 0xa42 <__stack+0x5e3>
+     a4a:	00 c0       	rjmp	.+0      	; 0xa4c <__stack+0x5ed>
+     a4c:	00 00       	nop
+     a4e:	6a cd       	rjmp	.-1324   	; 0x524 <__stack+0xc5>
+_delay_ms(200);
+break;
+}
+}
+
+else if(X==22)
+     a50:	86 31       	cpi	r24, 0x16	; 22
+     a52:	91 05       	cpc	r25, r1
+     a54:	09 f0       	breq	.+2      	; 0xa58 <__stack+0x5f9>
+     a56:	da c0       	rjmp	.+436    	; 0xc0c <__stack+0x7ad>
+{loc(0x01);
+     a58:	81 e0       	ldi	r24, 0x01	; 1
+     a5a:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+     a5e:	8f e1       	ldi	r24, 0x1F	; 31
+     a60:	9e e4       	ldi	r25, 0x4E	; 78
+     a62:	01 97       	sbiw	r24, 0x01	; 1
+     a64:	f1 f7       	brne	.-4      	; 0xa62 <__stack+0x603>
+     a66:	00 c0       	rjmp	.+0      	; 0xa68 <__stack+0x609>
+     a68:	00 00       	nop
+_delay_ms(10);
+loc(0x83);
+     a6a:	83 e8       	ldi	r24, 0x83	; 131
+     a6c:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Down Town Cafe");
+     a70:	c4 01       	movw	r24, r8
+     a72:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0x94);
+     a76:	84 e9       	ldi	r24, 0x94	; 148
+     a78:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Insert New Card");
+     a7c:	81 e4       	ldi	r24, 0x41	; 65
+     a7e:	91 e0       	ldi	r25, 0x01	; 1
+     a80:	0e 94 22 01 	call	0x244	; 0x244 <str>
+     a84:	c9 5e       	subi	r28, 0xE9	; 233
+     a86:	de 4f       	sbci	r29, 0xFE	; 254
+     a88:	68 80       	ld	r6, Y
+     a8a:	c7 51       	subi	r28, 0x17	; 23
+     a8c:	d1 40       	sbci	r29, 0x01	; 1
+     a8e:	c8 5e       	subi	r28, 0xE8	; 232
+     a90:	de 4f       	sbci	r29, 0xFE	; 254
+     a92:	78 80       	ld	r7, Y
+     a94:	c8 51       	subi	r28, 0x18	; 24
+     a96:	d1 40       	sbci	r29, 0x01	; 1
+unsigned char keypad();
+void ini();   /*rfid*/
+void send(char send);
+char rec(void);
+
+void main() 
+     a98:	0f 2e       	mov	r0, r31
+     a9a:	f5 e0       	ldi	r31, 0x05	; 5
+     a9c:	4f 2e       	mov	r4, r31
+     a9e:	55 24       	eor	r5, r5
+     aa0:	f0 2d       	mov	r31, r0
+     aa2:	4c 0e       	add	r4, r28
+     aa4:	5d 1e       	adc	r5, r29
+     aa6:	c5 5e       	subi	r28, 0xE5	; 229
+     aa8:	de 4f       	sbci	r29, 0xFE	; 254
+     aaa:	08 81       	ld	r16, Y
+     aac:	cb 51       	subi	r28, 0x1B	; 27
+     aae:	d1 40       	sbci	r29, 0x01	; 1
+     ab0:	c4 5e       	subi	r28, 0xE4	; 228
+     ab2:	de 4f       	sbci	r29, 0xFE	; 254
+     ab4:	18 81       	ld	r17, Y
+     ab6:	cc 51       	subi	r28, 0x1C	; 28
+     ab8:	d1 40       	sbci	r29, 0x01	; 1
+     aba:	cd 5e       	subi	r28, 0xED	; 237
+     abc:	de 4f       	sbci	r29, 0xFE	; 254
+     abe:	f8 80       	ld	r15, Y
+     ac0:	c3 51       	subi	r28, 0x13	; 19
+     ac2:	d1 40       	sbci	r29, 0x01	; 1
+     ac4:	cc 5e       	subi	r28, 0xEC	; 236
+     ac6:	de 4f       	sbci	r29, 0xFE	; 254
+     ac8:	e8 80       	ld	r14, Y
+     aca:	c4 51       	subi	r28, 0x14	; 20
+     acc:	d1 40       	sbci	r29, 0x01	; 1
+str("Down Town Cafe");
+loc(0x94);
+str("Insert New Card");
+for(i=0;i<=3;i++)                
+{
+x=keypad();
+     ace:	0e 94 41 00 	call	0x82	; 0x82 <keypad>
+a[0][i]=x;
+     ad2:	d8 01       	movw	r26, r16
+     ad4:	8d 93       	st	X+, r24
+     ad6:	8d 01       	movw	r16, r26
+str(".");
+     ad8:	8f 2d       	mov	r24, r15
+     ada:	9e 2d       	mov	r25, r14
+     adc:	0e 94 22 01 	call	0x244	; 0x244 <str>
+     ae0:	ef e1       	ldi	r30, 0x1F	; 31
+     ae2:	fe e4       	ldi	r31, 0x4E	; 78
+     ae4:	31 97       	sbiw	r30, 0x01	; 1
+     ae6:	f1 f7       	brne	.-4      	; 0xae4 <__stack+0x685>
+     ae8:	00 c0       	rjmp	.+0      	; 0xaea <__stack+0x68b>
+     aea:	00 00       	nop
+_delay_ms(10);
+loc(0x83);
+str("Down Town Cafe");
+loc(0x94);
+str("Insert New Card");
+for(i=0;i<=3;i++)                
+     aec:	04 15       	cp	r16, r4
+     aee:	15 05       	cpc	r17, r5
+     af0:	71 f7       	brne	.-36     	; 0xace <__stack+0x66f>
+     af2:	ee 24       	eor	r14, r14
+     af4:	ff 24       	eor	r15, r15
+     af6:	e3 94       	inc	r14
+     af8:	00 e0       	ldi	r16, 0x00	; 0
+     afa:	10 e0       	ldi	r17, 0x00	; 0
+     afc:	02 c0       	rjmp	.+4      	; 0xb02 <__stack+0x6a3>
+a[0][i]=x;
+str(".");
+_delay_ms(10);}
+
+
+for(i=1;i<=20;i++)              /*match the card in data*/
+     afe:	00 e0       	ldi	r16, 0x00	; 0
+     b00:	10 e0       	ldi	r17, 0x00	; 0
+ {y=0;
+  for(j=0;j<=3;j++)
+   {int l=eeprom_read_byte((i*12)+j);
+     b02:	c7 01       	movw	r24, r14
+     b04:	88 0f       	add	r24, r24
+     b06:	99 1f       	adc	r25, r25
+     b08:	8e 0d       	add	r24, r14
+     b0a:	9f 1d       	adc	r25, r15
+     b0c:	88 0f       	add	r24, r24
+     b0e:	99 1f       	adc	r25, r25
+     b10:	88 0f       	add	r24, r24
+     b12:	99 1f       	adc	r25, r25
+     b14:	80 0f       	add	r24, r16
+     b16:	91 1f       	adc	r25, r17
+     b18:	0e 94 7c 09 	call	0x12f8	; 0x12f8 <__eerd_byte_m16>
+if(l!=b[0][j])
+     b1c:	f5 01       	movw	r30, r10
+     b1e:	e0 0f       	add	r30, r16
+     b20:	f1 1f       	adc	r31, r17
+     b22:	20 81       	ld	r18, Z
+     b24:	30 e0       	ldi	r19, 0x00	; 0
+
+
+for(i=1;i<=20;i++)              /*match the card in data*/
+ {y=0;
+  for(j=0;j<=3;j++)
+   {int l=eeprom_read_byte((i*12)+j);
+     b26:	90 e0       	ldi	r25, 0x00	; 0
+if(l!=b[0][j])
+     b28:	28 17       	cp	r18, r24
+     b2a:	39 07       	cpc	r19, r25
+     b2c:	31 f4       	brne	.+12     	; 0xb3a <__stack+0x6db>
+_delay_ms(10);}
+
+
+for(i=1;i<=20;i++)              /*match the card in data*/
+ {y=0;
+  for(j=0;j<=3;j++)
+     b2e:	0f 5f       	subi	r16, 0xFF	; 255
+     b30:	1f 4f       	sbci	r17, 0xFF	; 255
+     b32:	04 30       	cpi	r16, 0x04	; 4
+     b34:	11 05       	cpc	r17, r1
+     b36:	2c f3       	brlt	.-54     	; 0xb02 <__stack+0x6a3>
+     b38:	07 c0       	rjmp	.+14     	; 0xb48 <__stack+0x6e9>
+a[0][i]=x;
+str(".");
+_delay_ms(10);}
+
+
+for(i=1;i<=20;i++)              /*match the card in data*/
+     b3a:	08 94       	sec
+     b3c:	e1 1c       	adc	r14, r1
+     b3e:	f1 1c       	adc	r15, r1
+     b40:	f5 e1       	ldi	r31, 0x15	; 21
+     b42:	ef 16       	cp	r14, r31
+     b44:	f1 04       	cpc	r15, r1
+     b46:	dc f2       	brlt	.-74     	; 0xafe <__stack+0x69f>
+if(l!='\0')
+   {   }
+	else
+    { break;}	   
+   }*/
+loc(0x01);
+     b48:	81 e0       	ldi	r24, 0x01	; 1
+     b4a:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+     b4e:	8f e1       	ldi	r24, 0x1F	; 31
+     b50:	9e e4       	ldi	r25, 0x4E	; 78
+     b52:	01 97       	sbiw	r24, 0x01	; 1
+     b54:	f1 f7       	brne	.-4      	; 0xb52 <__stack+0x6f3>
+     b56:	00 c0       	rjmp	.+0      	; 0xb58 <__stack+0x6f9>
+     b58:	00 00       	nop
+_delay_ms(10);
+loc(0x83);
+     b5a:	83 e8       	ldi	r24, 0x83	; 131
+     b5c:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Down Town Cafe");
+     b60:	c4 01       	movw	r24, r8
+     b62:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0x94);
+     b66:	84 e9       	ldi	r24, 0x94	; 148
+     b68:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Saving Your Card");
+     b6c:	81 e5       	ldi	r24, 0x51	; 81
+     b6e:	91 e0       	ldi	r25, 0x01	; 1
+     b70:	0e 94 22 01 	call	0x244	; 0x244 <str>
+
+for(j=0;j<=3;j++)                
+{eeprom_write_byte((i*12)+j,a[0][j]);
+     b74:	c7 01       	movw	r24, r14
+     b76:	88 0f       	add	r24, r24
+     b78:	99 1f       	adc	r25, r25
+     b7a:	e8 0e       	add	r14, r24
+     b7c:	f9 1e       	adc	r15, r25
+     b7e:	ee 0c       	add	r14, r14
+     b80:	ff 1c       	adc	r15, r15
+     b82:	ee 0c       	add	r14, r14
+     b84:	ff 1c       	adc	r15, r15
+     b86:	cd 5e       	subi	r28, 0xED	; 237
+     b88:	de 4f       	sbci	r29, 0xFE	; 254
+     b8a:	18 81       	ld	r17, Y
+     b8c:	c3 51       	subi	r28, 0x13	; 19
+     b8e:	d1 40       	sbci	r29, 0x01	; 1
+     b90:	cc 5e       	subi	r28, 0xEC	; 236
+     b92:	de 4f       	sbci	r29, 0xFE	; 254
+     b94:	08 81       	ld	r16, Y
+     b96:	c4 51       	subi	r28, 0x14	; 20
+     b98:	d1 40       	sbci	r29, 0x01	; 1
+     b9a:	d3 01       	movw	r26, r6
+     b9c:	6d 91       	ld	r22, X+
+     b9e:	3d 01       	movw	r6, r26
+     ba0:	c7 01       	movw	r24, r14
+     ba2:	0e 94 84 09 	call	0x1308	; 0x1308 <__eewr_byte_m16>
+str(".");
+     ba6:	81 2f       	mov	r24, r17
+     ba8:	90 2f       	mov	r25, r16
+     baa:	0e 94 22 01 	call	0x244	; 0x244 <str>
+     bae:	2f ef       	ldi	r18, 0xFF	; 255
+     bb0:	39 ef       	ldi	r19, 0xF9	; 249
+     bb2:	40 e0       	ldi	r20, 0x00	; 0
+     bb4:	21 50       	subi	r18, 0x01	; 1
+     bb6:	30 40       	sbci	r19, 0x00	; 0
+     bb8:	40 40       	sbci	r20, 0x00	; 0
+     bba:	e1 f7       	brne	.-8      	; 0xbb4 <__stack+0x755>
+     bbc:	00 c0       	rjmp	.+0      	; 0xbbe <__stack+0x75f>
+     bbe:	00 00       	nop
+     bc0:	08 94       	sec
+     bc2:	e1 1c       	adc	r14, r1
+     bc4:	f1 1c       	adc	r15, r1
+loc(0x83);
+str("Down Town Cafe");
+loc(0x94);
+str("Saving Your Card");
+
+for(j=0;j<=3;j++)                
+     bc6:	64 14       	cp	r6, r4
+     bc8:	75 04       	cpc	r7, r5
+     bca:	39 f7       	brne	.-50     	; 0xb9a <__stack+0x73b>
+{eeprom_write_byte((i*12)+j,a[0][j]);
+str(".");
+_delay_ms(40);
+}
+
+loc(0x01);
+     bcc:	81 e0       	ldi	r24, 0x01	; 1
+     bce:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+     bd2:	8f e1       	ldi	r24, 0x1F	; 31
+     bd4:	9e e4       	ldi	r25, 0x4E	; 78
+     bd6:	01 97       	sbiw	r24, 0x01	; 1
+     bd8:	f1 f7       	brne	.-4      	; 0xbd6 <__stack+0x777>
+     bda:	00 c0       	rjmp	.+0      	; 0xbdc <__stack+0x77d>
+     bdc:	00 00       	nop
+_delay_ms(10);
+loc(0x83);
+     bde:	83 e8       	ldi	r24, 0x83	; 131
+     be0:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Down Town Cafe");
+     be4:	c4 01       	movw	r24, r8
+     be6:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0x94);
+     bea:	84 e9       	ldi	r24, 0x94	; 148
+     bec:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Successfully Saved");
+     bf0:	82 e6       	ldi	r24, 0x62	; 98
+     bf2:	91 e0       	ldi	r25, 0x01	; 1
+     bf4:	0e 94 22 01 	call	0x244	; 0x244 <str>
+     bf8:	2f ef       	ldi	r18, 0xFF	; 255
+     bfa:	32 e5       	ldi	r19, 0x52	; 82
+     bfc:	47 e0       	ldi	r20, 0x07	; 7
+     bfe:	21 50       	subi	r18, 0x01	; 1
+     c00:	30 40       	sbci	r19, 0x00	; 0
+     c02:	40 40       	sbci	r20, 0x00	; 0
+     c04:	e1 f7       	brne	.-8      	; 0xbfe <__stack+0x79f>
+     c06:	00 c0       	rjmp	.+0      	; 0xc08 <__stack+0x7a9>
+     c08:	00 00       	nop
+     c0a:	8c cc       	rjmp	.-1768   	; 0x524 <__stack+0xc5>
+_delay_ms(300);
+}
+
+else if(X==44)
+     c0c:	8c 32       	cpi	r24, 0x2C	; 44
+     c0e:	91 05       	cpc	r25, r1
+     c10:	09 f0       	breq	.+2      	; 0xc14 <__stack+0x7b5>
+     c12:	88 cc       	rjmp	.-1776   	; 0x524 <__stack+0xc5>
+     c14:	d0 cb       	rjmp	.-2144   	; 0x3b6 <main+0xfa>
+break;
+}
+}
+}
+
+else if(q==11)
+     c16:	8b 30       	cpi	r24, 0x0B	; 11
+     c18:	91 05       	cpc	r25, r1
+     c1a:	09 f0       	breq	.+2      	; 0xc1e <__stack+0x7bf>
+     c1c:	cc cb       	rjmp	.-2152   	; 0x3b6 <main+0xfa>
+{
+while (1)
+{
+loc(0x01);
+     c1e:	81 e0       	ldi	r24, 0x01	; 1
+     c20:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+     c24:	8f e1       	ldi	r24, 0x1F	; 31
+     c26:	9e e4       	ldi	r25, 0x4E	; 78
+     c28:	01 97       	sbiw	r24, 0x01	; 1
+     c2a:	f1 f7       	brne	.-4      	; 0xc28 <__stack+0x7c9>
+     c2c:	00 c0       	rjmp	.+0      	; 0xc2e <__stack+0x7cf>
+     c2e:	00 00       	nop
+_delay_ms(10);
+loc(0x83);
+     c30:	83 e8       	ldi	r24, 0x83	; 131
+     c32:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Down Town Cafe");
+     c36:	80 e6       	ldi	r24, 0x60	; 96
+     c38:	90 e0       	ldi	r25, 0x00	; 0
+     c3a:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0xc6);
+     c3e:	86 ec       	ldi	r24, 0xC6	; 198
+     c40:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Welcome");
+     c44:	85 e7       	ldi	r24, 0x75	; 117
+     c46:	91 e0       	ldi	r25, 0x01	; 1
+     c48:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0x94);
+     c4c:	84 e9       	ldi	r24, 0x94	; 148
+     c4e:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Insert Card");
+     c52:	85 ed       	ldi	r24, 0xD5	; 213
+     c54:	90 e0       	ldi	r25, 0x00	; 0
+     c56:	0e 94 22 01 	call	0x244	; 0x244 <str>
+     c5a:	76 01       	movw	r14, r12
+unsigned char keypad();
+void ini();   /*rfid*/
+void send(char send);
+char rec(void);
+
+void main() 
+     c5c:	8e 01       	movw	r16, r28
+     c5e:	0b 5f       	subi	r16, 0xFB	; 251
+     c60:	1f 4f       	sbci	r17, 0xFF	; 255
+loc(0x94);
+str("Insert Card");
+
+for(j=0;j<=3;j++)                /*to read card*/
+{
+x=keypad();
+     c62:	0e 94 41 00 	call	0x82	; 0x82 <keypad>
+a[0][j]=x;
+     c66:	d7 01       	movw	r26, r14
+     c68:	8d 93       	st	X+, r24
+     c6a:	7d 01       	movw	r14, r26
+str(".");
+     c6c:	81 ee       	ldi	r24, 0xE1	; 225
+     c6e:	90 e0       	ldi	r25, 0x00	; 0
+     c70:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0xc6);
+str("Welcome");
+loc(0x94);
+str("Insert Card");
+
+for(j=0;j<=3;j++)                /*to read card*/
+     c74:	e0 16       	cp	r14, r16
+     c76:	f1 06       	cpc	r15, r17
+     c78:	a1 f7       	brne	.-24     	; 0xc62 <__stack+0x803>
+     c7a:	ee 24       	eor	r14, r14
+     c7c:	ff 24       	eor	r15, r15
+     c7e:	00 e0       	ldi	r16, 0x00	; 0
+     c80:	10 e0       	ldi	r17, 0x00	; 0
+x=keypad();
+a[0][j]=x;
+str(".");
+}
+
+for(i=0;i<=20;i++)              /*match the card in data*/
+     c82:	aa 24       	eor	r10, r10
+     c84:	bb 24       	eor	r11, r11
+     c86:	01 c0       	rjmp	.+2      	; 0xc8a <__stack+0x82b>
+     c88:	85 01       	movw	r16, r10
+{y=0;
+ for(j=0;j<=3;j++)
+   {int l=eeprom_read_byte((i*12)+j);
+     c8a:	c7 01       	movw	r24, r14
+     c8c:	88 0f       	add	r24, r24
+     c8e:	99 1f       	adc	r25, r25
+     c90:	8e 0d       	add	r24, r14
+     c92:	9f 1d       	adc	r25, r15
+     c94:	88 0f       	add	r24, r24
+     c96:	99 1f       	adc	r25, r25
+     c98:	88 0f       	add	r24, r24
+     c9a:	99 1f       	adc	r25, r25
+     c9c:	80 0f       	add	r24, r16
+     c9e:	91 1f       	adc	r25, r17
+     ca0:	0e 94 7c 09 	call	0x12f8	; 0x12f8 <__eerd_byte_m16>
+    if(l!=a[0][j])
+     ca4:	f6 01       	movw	r30, r12
+     ca6:	e0 0f       	add	r30, r16
+     ca8:	f1 1f       	adc	r31, r17
+     caa:	20 81       	ld	r18, Z
+     cac:	30 e0       	ldi	r19, 0x00	; 0
+}
+
+for(i=0;i<=20;i++)              /*match the card in data*/
+{y=0;
+ for(j=0;j<=3;j++)
+   {int l=eeprom_read_byte((i*12)+j);
+     cae:	90 e0       	ldi	r25, 0x00	; 0
+    if(l!=a[0][j])
+     cb0:	28 17       	cp	r18, r24
+     cb2:	39 07       	cpc	r19, r25
+     cb4:	31 f4       	brne	.+12     	; 0xcc2 <__stack+0x863>
+str(".");
+}
+
+for(i=0;i<=20;i++)              /*match the card in data*/
+{y=0;
+ for(j=0;j<=3;j++)
+     cb6:	0f 5f       	subi	r16, 0xFF	; 255
+     cb8:	1f 4f       	sbci	r17, 0xFF	; 255
+     cba:	04 30       	cpi	r16, 0x04	; 4
+     cbc:	11 05       	cpc	r17, r1
+     cbe:	2c f3       	brlt	.-54     	; 0xc8a <__stack+0x82b>
+     cc0:	08 c0       	rjmp	.+16     	; 0xcd2 <__stack+0x873>
+x=keypad();
+a[0][j]=x;
+str(".");
+}
+
+for(i=0;i<=20;i++)              /*match the card in data*/
+     cc2:	08 94       	sec
+     cc4:	e1 1c       	adc	r14, r1
+     cc6:	f1 1c       	adc	r15, r1
+     cc8:	b5 e1       	ldi	r27, 0x15	; 21
+     cca:	eb 16       	cp	r14, r27
+     ccc:	f1 04       	cpc	r15, r1
+     cce:	e4 f2       	brlt	.-72     	; 0xc88 <__stack+0x829>
+     cd0:	bb c2       	rjmp	.+1398   	; 0x1248 <__stack+0xde9>
+loc(0x83);
+str("Down Town Cafe");
+loc(0x94);
+str("Your Card Balance");
+for(j=0;j<=3;j++)
+	{f[0][j]=eeprom_read_byte(240+(i*4)+j);}
+     cd2:	c7 01       	movw	r24, r14
+     cd4:	cc 96       	adiw	r24, 0x3c	; 60
+     cd6:	1c 01       	movw	r2, r24
+     cd8:	22 0c       	add	r2, r2
+     cda:	33 1c       	adc	r3, r3
+     cdc:	22 0c       	add	r2, r2
+     cde:	33 1c       	adc	r3, r3
+if(y==0)
+{
+loc(0x01);
+_delay_ms(10);
+loc(0x83);
+str("Down Town Cafe");
+     ce0:	0f 2e       	mov	r0, r31
+     ce2:	f0 e6       	ldi	r31, 0x60	; 96
+     ce4:	8f 2e       	mov	r8, r31
+     ce6:	f0 e0       	ldi	r31, 0x00	; 0
+     ce8:	9f 2e       	mov	r9, r31
+     cea:	f0 2d       	mov	r31, r0
+loc(0x94);
+str("Check Balance");
+     cec:	0f 2e       	mov	r0, r31
+     cee:	fd e7       	ldi	r31, 0x7D	; 125
+     cf0:	6f 2e       	mov	r6, r31
+     cf2:	f1 e0       	ldi	r31, 0x01	; 1
+     cf4:	7f 2e       	mov	r7, r31
+     cf6:	f0 2d       	mov	r31, r0
+loc(0xd4);
+str("Proceed Payment");
+     cf8:	0f 2e       	mov	r0, r31
+     cfa:	fb e8       	ldi	r31, 0x8B	; 139
+     cfc:	4f 2e       	mov	r4, r31
+     cfe:	f1 e0       	ldi	r31, 0x01	; 1
+     d00:	5f 2e       	mov	r5, r31
+     d02:	f0 2d       	mov	r31, r0
+{loc(0x01);
+_delay_ms(10);
+loc(0x83);
+str("Down Town Cafe");
+loc(0x94);
+str("Your Card Balance");
+     d04:	c1 01       	movw	r24, r2
+     d06:	cf 5e       	subi	r28, 0xEF	; 239
+     d08:	de 4f       	sbci	r29, 0xFE	; 254
+     d0a:	28 82       	st	Y, r2
+     d0c:	c1 51       	subi	r28, 0x11	; 17
+     d0e:	d1 40       	sbci	r29, 0x01	; 1
+     d10:	ce 5e       	subi	r28, 0xEE	; 238
+     d12:	de 4f       	sbci	r29, 0xFE	; 254
+     d14:	98 83       	st	Y, r25
+     d16:	c2 51       	subi	r28, 0x12	; 18
+     d18:	d1 40       	sbci	r29, 0x01	; 1
+   }
+while (1)
+{
+if(y==0)
+{
+loc(0x01);
+     d1a:	81 e0       	ldi	r24, 0x01	; 1
+     d1c:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+     d20:	ef e1       	ldi	r30, 0x1F	; 31
+     d22:	fe e4       	ldi	r31, 0x4E	; 78
+     d24:	31 97       	sbiw	r30, 0x01	; 1
+     d26:	f1 f7       	brne	.-4      	; 0xd24 <__stack+0x8c5>
+     d28:	00 c0       	rjmp	.+0      	; 0xd2a <__stack+0x8cb>
+     d2a:	00 00       	nop
+_delay_ms(10);
+loc(0x83);
+     d2c:	83 e8       	ldi	r24, 0x83	; 131
+     d2e:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Down Town Cafe");
+     d32:	c4 01       	movw	r24, r8
+     d34:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0x94);
+     d38:	84 e9       	ldi	r24, 0x94	; 148
+     d3a:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Check Balance");
+     d3e:	c3 01       	movw	r24, r6
+     d40:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0xd4);
+     d44:	84 ed       	ldi	r24, 0xD4	; 212
+     d46:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Proceed Payment");
+     d4a:	c2 01       	movw	r24, r4
+     d4c:	0e 94 22 01 	call	0x244	; 0x244 <str>
+
+X=keypad();
+     d50:	0e 94 41 00 	call	0x82	; 0x82 <keypad>
+     d54:	90 e0       	ldi	r25, 0x00	; 0
+
+if(X==11)
+     d56:	8b 30       	cpi	r24, 0x0B	; 11
+     d58:	91 05       	cpc	r25, r1
+     d5a:	09 f0       	breq	.+2      	; 0xd5e <__stack+0x8ff>
+     d5c:	83 c0       	rjmp	.+262    	; 0xe64 <__stack+0xa05>
+{loc(0x01);
+     d5e:	81 e0       	ldi	r24, 0x01	; 1
+     d60:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+     d64:	8f e1       	ldi	r24, 0x1F	; 31
+     d66:	9e e4       	ldi	r25, 0x4E	; 78
+     d68:	01 97       	sbiw	r24, 0x01	; 1
+     d6a:	f1 f7       	brne	.-4      	; 0xd68 <__stack+0x909>
+     d6c:	00 c0       	rjmp	.+0      	; 0xd6e <__stack+0x90f>
+     d6e:	00 00       	nop
+_delay_ms(10);
+loc(0x83);
+     d70:	83 e8       	ldi	r24, 0x83	; 131
+     d72:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Down Town Cafe");
+     d76:	c4 01       	movw	r24, r8
+     d78:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0x94);
+     d7c:	84 e9       	ldi	r24, 0x94	; 148
+     d7e:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Your Card Balance");
+     d82:	8b e9       	ldi	r24, 0x9B	; 155
+     d84:	91 e0       	ldi	r25, 0x01	; 1
+     d86:	0e 94 22 01 	call	0x244	; 0x244 <str>
+     d8a:	cf 5e       	subi	r28, 0xEF	; 239
+     d8c:	de 4f       	sbci	r29, 0xFE	; 254
+     d8e:	08 81       	ld	r16, Y
+     d90:	c1 51       	subi	r28, 0x11	; 17
+     d92:	d1 40       	sbci	r29, 0x01	; 1
+     d94:	ce 5e       	subi	r28, 0xEE	; 238
+     d96:	de 4f       	sbci	r29, 0xFE	; 254
+     d98:	18 81       	ld	r17, Y
+     d9a:	c2 51       	subi	r28, 0x12	; 18
+     d9c:	d1 40       	sbci	r29, 0x01	; 1
+     d9e:	0f 2e       	mov	r0, r31
+     da0:	f5 e0       	ldi	r31, 0x05	; 5
+     da2:	af 2e       	mov	r10, r31
+     da4:	f1 e0       	ldi	r31, 0x01	; 1
+     da6:	bf 2e       	mov	r11, r31
+     da8:	f0 2d       	mov	r31, r0
+     daa:	ac 0e       	add	r10, r28
+     dac:	bd 1e       	adc	r11, r29
+     dae:	cb 5e       	subi	r28, 0xEB	; 235
+     db0:	de 4f       	sbci	r29, 0xFE	; 254
+     db2:	39 82       	std	Y+1, r3	; 0x01
+     db4:	28 82       	st	Y, r2
+     db6:	c5 51       	subi	r28, 0x15	; 21
+     db8:	d1 40       	sbci	r29, 0x01	; 1
+     dba:	17 01       	movw	r2, r14
+     dbc:	c7 5e       	subi	r28, 0xE7	; 231
+     dbe:	de 4f       	sbci	r29, 0xFE	; 254
+     dc0:	e8 80       	ld	r14, Y
+     dc2:	f9 80       	ldd	r15, Y+1	; 0x01
+     dc4:	c9 51       	subi	r28, 0x19	; 25
+     dc6:	d1 40       	sbci	r29, 0x01	; 1
+for(j=0;j<=3;j++)
+	{f[0][j]=eeprom_read_byte(240+(i*4)+j);}
+     dc8:	c8 01       	movw	r24, r16
+     dca:	0e 94 7c 09 	call	0x12f8	; 0x12f8 <__eerd_byte_m16>
+     dce:	d5 01       	movw	r26, r10
+     dd0:	8d 93       	st	X+, r24
+     dd2:	5d 01       	movw	r10, r26
+     dd4:	0f 5f       	subi	r16, 0xFF	; 255
+     dd6:	1f 4f       	sbci	r17, 0xFF	; 255
+_delay_ms(10);
+loc(0x83);
+str("Down Town Cafe");
+loc(0x94);
+str("Your Card Balance");
+for(j=0;j<=3;j++)
+     dd8:	ae 15       	cp	r26, r14
+     dda:	bf 05       	cpc	r27, r15
+     ddc:	a9 f7       	brne	.-22     	; 0xdc8 <__stack+0x969>
+     dde:	71 01       	movw	r14, r2
+     de0:	cb 5e       	subi	r28, 0xEB	; 235
+     de2:	de 4f       	sbci	r29, 0xFE	; 254
+     de4:	28 80       	ld	r2, Y
+     de6:	39 80       	ldd	r3, Y+1	; 0x01
+     de8:	c5 51       	subi	r28, 0x15	; 21
+     dea:	d1 40       	sbci	r29, 0x01	; 1
+	{f[0][j]=eeprom_read_byte(240+(i*4)+j);}
+	int t=1000*f[0][0]+100*f[0][1]+10*f[0][2]+1*f[0][3];
+     dec:	cb 5f       	subi	r28, 0xFB	; 251
+     dee:	de 4f       	sbci	r29, 0xFE	; 254
+     df0:	88 81       	ld	r24, Y
+     df2:	c5 50       	subi	r28, 0x05	; 5
+     df4:	d1 40       	sbci	r29, 0x01	; 1
+     df6:	90 e0       	ldi	r25, 0x00	; 0
+     df8:	e8 ee       	ldi	r30, 0xE8	; 232
+     dfa:	f3 e0       	ldi	r31, 0x03	; 3
+     dfc:	8e 9f       	mul	r24, r30
+     dfe:	80 01       	movw	r16, r0
+     e00:	8f 9f       	mul	r24, r31
+     e02:	10 0d       	add	r17, r0
+     e04:	9e 9f       	mul	r25, r30
+     e06:	10 0d       	add	r17, r0
+     e08:	11 24       	eor	r1, r1
+     e0a:	ca 5f       	subi	r28, 0xFA	; 250
+     e0c:	de 4f       	sbci	r29, 0xFE	; 254
+     e0e:	88 81       	ld	r24, Y
+     e10:	c6 50       	subi	r28, 0x06	; 6
+     e12:	d1 40       	sbci	r29, 0x01	; 1
+     e14:	f4 e6       	ldi	r31, 0x64	; 100
+     e16:	8f 9f       	mul	r24, r31
+     e18:	c0 01       	movw	r24, r0
+     e1a:	11 24       	eor	r1, r1
+     e1c:	80 0f       	add	r24, r16
+     e1e:	91 1f       	adc	r25, r17
+     e20:	c8 5f       	subi	r28, 0xF8	; 248
+     e22:	de 4f       	sbci	r29, 0xFE	; 254
+     e24:	28 81       	ld	r18, Y
+     e26:	c8 50       	subi	r28, 0x08	; 8
+     e28:	d1 40       	sbci	r29, 0x01	; 1
+     e2a:	82 0f       	add	r24, r18
+     e2c:	91 1d       	adc	r25, r1
+     e2e:	c9 5f       	subi	r28, 0xF9	; 249
+     e30:	de 4f       	sbci	r29, 0xFE	; 254
+     e32:	08 81       	ld	r16, Y
+     e34:	c7 50       	subi	r28, 0x07	; 7
+     e36:	d1 40       	sbci	r29, 0x01	; 1
+     e38:	2a e0       	ldi	r18, 0x0A	; 10
+     e3a:	02 9f       	mul	r16, r18
+     e3c:	80 01       	movw	r16, r0
+     e3e:	11 24       	eor	r1, r1
+     e40:	08 0f       	add	r16, r24
+     e42:	19 1f       	adc	r17, r25
+loc(0xd9);
+     e44:	89 ed       	ldi	r24, 0xD9	; 217
+     e46:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+num(t);
+     e4a:	c8 01       	movw	r24, r16
+     e4c:	0e 94 31 01 	call	0x262	; 0x262 <num>
+     e50:	4f ef       	ldi	r20, 0xFF	; 255
+     e52:	52 e5       	ldi	r21, 0x52	; 82
+     e54:	67 e0       	ldi	r22, 0x07	; 7
+     e56:	41 50       	subi	r20, 0x01	; 1
+     e58:	50 40       	sbci	r21, 0x00	; 0
+     e5a:	60 40       	sbci	r22, 0x00	; 0
+     e5c:	e1 f7       	brne	.-8      	; 0xe56 <__stack+0x9f7>
+     e5e:	00 c0       	rjmp	.+0      	; 0xe60 <__stack+0xa01>
+     e60:	00 00       	nop
+     e62:	5b cf       	rjmp	.-330    	; 0xd1a <__stack+0x8bb>
+_delay_ms(300);		
+}
+else if(X==44)
+     e64:	8c 32       	cpi	r24, 0x2C	; 44
+     e66:	91 05       	cpc	r25, r1
+     e68:	09 f4       	brne	.+2      	; 0xe6c <__stack+0xa0d>
+     e6a:	a5 ca       	rjmp	.-2742   	; 0x3b6 <main+0xfa>
+break;	
+else if(X==22)
+     e6c:	86 31       	cpi	r24, 0x16	; 22
+     e6e:	91 05       	cpc	r25, r1
+     e70:	09 f0       	breq	.+2      	; 0xe74 <__stack+0xa15>
+     e72:	53 cf       	rjmp	.-346    	; 0xd1a <__stack+0x8bb>
+{
+loc(0x01);
+     e74:	81 e0       	ldi	r24, 0x01	; 1
+     e76:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+     e7a:	8f e1       	ldi	r24, 0x1F	; 31
+     e7c:	9e e4       	ldi	r25, 0x4E	; 78
+     e7e:	01 97       	sbiw	r24, 0x01	; 1
+     e80:	f1 f7       	brne	.-4      	; 0xe7e <__stack+0xa1f>
+     e82:	00 c0       	rjmp	.+0      	; 0xe84 <__stack+0xa25>
+     e84:	00 00       	nop
+_delay_ms(10);
+loc(0x83);
+     e86:	83 e8       	ldi	r24, 0x83	; 131
+     e88:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Down Town Cafe");
+     e8c:	80 e6       	ldi	r24, 0x60	; 96
+     e8e:	90 e0       	ldi	r25, 0x00	; 0
+     e90:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0x94);
+     e94:	84 e9       	ldi	r24, 0x94	; 148
+     e96:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Enter Bill Amount");
+     e9a:	8d ea       	ldi	r24, 0xAD	; 173
+     e9c:	91 e0       	ldi	r25, 0x01	; 1
+     e9e:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0xd4);
+     ea2:	84 ed       	ldi	r24, 0xD4	; 212
+     ea4:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Pay");
+     ea8:	8f eb       	ldi	r24, 0xBF	; 191
+     eaa:	91 e0       	ldi	r25, 0x01	; 1
+     eac:	0e 94 22 01 	call	0x244	; 0x244 <str>
+
+int I,K;
+for(I=0,K=0xe0;I<=4&&K<=0xe5;I++,K++)
+     eb0:	0f 2e       	mov	r0, r31
+     eb2:	f0 ee       	ldi	r31, 0xE0	; 224
+     eb4:	8f 2e       	mov	r8, r31
+     eb6:	99 24       	eor	r9, r9
+     eb8:	f0 2d       	mov	r31, r0
+     eba:	00 e0       	ldi	r16, 0x00	; 0
+     ebc:	10 e0       	ldi	r17, 0x00	; 0
+     ebe:	57 01       	movw	r10, r14
+{Y=keypad();
+     ec0:	0e 94 41 00 	call	0x82	; 0x82 <keypad>
+     ec4:	e8 2e       	mov	r14, r24
+     ec6:	ff 24       	eor	r15, r15
+   
+ if(Y!=22)
+     ec8:	96 e1       	ldi	r25, 0x16	; 22
+     eca:	e9 16       	cp	r14, r25
+     ecc:	f1 04       	cpc	r15, r1
+     ece:	71 f0       	breq	.+28     	; 0xeec <__stack+0xa8d>
+unsigned char keypad();
+void ini();   /*rfid*/
+void send(char send);
+char rec(void);
+
+void main() 
+     ed0:	e1 e0       	ldi	r30, 0x01	; 1
+     ed2:	f1 e0       	ldi	r31, 0x01	; 1
+     ed4:	ec 0f       	add	r30, r28
+     ed6:	fd 1f       	adc	r31, r29
+     ed8:	e0 0f       	add	r30, r16
+     eda:	f1 1f       	adc	r31, r17
+int I,K;
+for(I=0,K=0xe0;I<=4&&K<=0xe5;I++,K++)
+{Y=keypad();
+   
+ if(Y!=22)
+   {e[0][I]=Y;
+     edc:	80 83       	st	Z, r24
+    loc(K);
+     ede:	88 2d       	mov	r24, r8
+     ee0:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+    num(Y);	
+     ee4:	c7 01       	movw	r24, r14
+     ee6:	0e 94 31 01 	call	0x262	; 0x262 <num>
+     eea:	a0 c1       	rjmp	.+832    	; 0x122c <__stack+0xdcd>
+	}
+	
+ else if(Y==22&&i==0)		
+     eec:	a1 14       	cp	r10, r1
+     eee:	b1 04       	cpc	r11, r1
+     ef0:	69 f4       	brne	.+26     	; 0xf0c <__stack+0xaad>
+ {e[0][0]=0;
+     ef2:	cf 5f       	subi	r28, 0xFF	; 255
+     ef4:	de 4f       	sbci	r29, 0xFE	; 254
+     ef6:	18 82       	st	Y, r1
+     ef8:	c1 50       	subi	r28, 0x01	; 1
+     efa:	d1 40       	sbci	r29, 0x01	; 1
+  loc(0xa0);
+     efc:	80 ea       	ldi	r24, 0xA0	; 160
+     efe:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+  num(0);}
+     f02:	80 e0       	ldi	r24, 0x00	; 0
+     f04:	90 e0       	ldi	r25, 0x00	; 0
+     f06:	0e 94 31 01 	call	0x262	; 0x262 <num>
+     f0a:	90 c1       	rjmp	.+800    	; 0x122c <__stack+0xdcd>
+     f0c:	75 01       	movw	r14, r10
+	 
+else if(Y==22)
+{loc(K);
+     f0e:	88 2d       	mov	r24, r8
+     f10:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("/");
+     f14:	80 e0       	ldi	r24, 0x00	; 0
+     f16:	91 e0       	ldi	r25, 0x01	; 1
+     f18:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(++K);
+     f1c:	88 2d       	mov	r24, r8
+     f1e:	8f 5f       	subi	r24, 0xFF	; 255
+     f20:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("-");
+     f24:	82 e0       	ldi	r24, 0x02	; 2
+     f26:	91 e0       	ldi	r25, 0x01	; 1
+     f28:	0e 94 22 01 	call	0x244	; 0x244 <str>
+     f2c:	2f ef       	ldi	r18, 0xFF	; 255
+     f2e:	30 e7       	ldi	r19, 0x70	; 112
+     f30:	42 e0       	ldi	r20, 0x02	; 2
+     f32:	21 50       	subi	r18, 0x01	; 1
+     f34:	30 40       	sbci	r19, 0x00	; 0
+     f36:	40 40       	sbci	r20, 0x00	; 0
+     f38:	e1 f7       	brne	.-8      	; 0xf32 <__stack+0xad3>
+     f3a:	00 c0       	rjmp	.+0      	; 0xf3c <__stack+0xadd>
+     f3c:	00 00       	nop
+_delay_ms(100);
+loc(0x01);
+     f3e:	81 e0       	ldi	r24, 0x01	; 1
+     f40:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+     f44:	8f e1       	ldi	r24, 0x1F	; 31
+     f46:	9e e4       	ldi	r25, 0x4E	; 78
+     f48:	01 97       	sbiw	r24, 0x01	; 1
+     f4a:	f1 f7       	brne	.-4      	; 0xf48 <__stack+0xae9>
+     f4c:	00 c0       	rjmp	.+0      	; 0xf4e <__stack+0xaef>
+     f4e:	00 00       	nop
+_delay_ms(10);
+loc(0x83);
+     f50:	83 e8       	ldi	r24, 0x83	; 131
+     f52:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Down Town Cafe");
+     f56:	80 e6       	ldi	r24, 0x60	; 96
+     f58:	90 e0       	ldi	r25, 0x00	; 0
+     f5a:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0xd4);
+     f5e:	84 ed       	ldi	r24, 0xD4	; 212
+     f60:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("processing...");
+     f64:	84 e0       	ldi	r24, 0x04	; 4
+     f66:	91 e0       	ldi	r25, 0x01	; 1
+     f68:	0e 94 22 01 	call	0x244	; 0x244 <str>
+     f6c:	2f e7       	ldi	r18, 0x7F	; 127
+     f6e:	39 ea       	ldi	r19, 0xA9	; 169
+     f70:	43 e0       	ldi	r20, 0x03	; 3
+     f72:	21 50       	subi	r18, 0x01	; 1
+     f74:	30 40       	sbci	r19, 0x00	; 0
+     f76:	40 40       	sbci	r20, 0x00	; 0
+     f78:	e1 f7       	brne	.-8      	; 0xf72 <__stack+0xb13>
+     f7a:	00 c0       	rjmp	.+0      	; 0xf7c <__stack+0xb1d>
+     f7c:	00 00       	nop
+_delay_ms(150);
+
+int w,r,t,m;
+if(I==4){w=1000;}
+     f7e:	04 30       	cpi	r16, 0x04	; 4
+     f80:	11 05       	cpc	r17, r1
+     f82:	51 f0       	breq	.+20     	; 0xf98 <__stack+0xb39>
+else if(I==3){w=100;}
+     f84:	03 30       	cpi	r16, 0x03	; 3
+     f86:	11 05       	cpc	r17, r1
+     f88:	81 f0       	breq	.+32     	; 0xfaa <__stack+0xb4b>
+else if(I==2){w=10;}
+     f8a:	02 30       	cpi	r16, 0x02	; 2
+     f8c:	11 05       	cpc	r17, r1
+     f8e:	b1 f0       	breq	.+44     	; 0xfbc <__stack+0xb5d>
+else if(I==1){w=1;}
+     f90:	01 30       	cpi	r16, 0x01	; 1
+     f92:	11 05       	cpc	r17, r1
+     f94:	21 f5       	brne	.+72     	; 0xfde <__stack+0xb7f>
+     f96:	1b c0       	rjmp	.+54     	; 0xfce <__stack+0xb6f>
+loc(0xd4);
+str("processing...");
+_delay_ms(150);
+
+int w,r,t,m;
+if(I==4){w=1000;}
+     f98:	48 ee       	ldi	r20, 0xE8	; 232
+     f9a:	53 e0       	ldi	r21, 0x03	; 3
+     f9c:	c1 5e       	subi	r28, 0xE1	; 225
+     f9e:	de 4f       	sbci	r29, 0xFE	; 254
+     fa0:	59 83       	std	Y+1, r21	; 0x01
+     fa2:	48 83       	st	Y, r20
+     fa4:	cf 51       	subi	r28, 0x1F	; 31
+     fa6:	d1 40       	sbci	r29, 0x01	; 1
+     fa8:	1a c0       	rjmp	.+52     	; 0xfde <__stack+0xb7f>
+else if(I==3){w=100;}
+     faa:	64 e6       	ldi	r22, 0x64	; 100
+     fac:	70 e0       	ldi	r23, 0x00	; 0
+     fae:	c1 5e       	subi	r28, 0xE1	; 225
+     fb0:	de 4f       	sbci	r29, 0xFE	; 254
+     fb2:	79 83       	std	Y+1, r23	; 0x01
+     fb4:	68 83       	st	Y, r22
+     fb6:	cf 51       	subi	r28, 0x1F	; 31
+     fb8:	d1 40       	sbci	r29, 0x01	; 1
+     fba:	11 c0       	rjmp	.+34     	; 0xfde <__stack+0xb7f>
+else if(I==2){w=10;}
+     fbc:	8a e0       	ldi	r24, 0x0A	; 10
+     fbe:	90 e0       	ldi	r25, 0x00	; 0
+     fc0:	c1 5e       	subi	r28, 0xE1	; 225
+     fc2:	de 4f       	sbci	r29, 0xFE	; 254
+     fc4:	99 83       	std	Y+1, r25	; 0x01
+     fc6:	88 83       	st	Y, r24
+     fc8:	cf 51       	subi	r28, 0x1F	; 31
+     fca:	d1 40       	sbci	r29, 0x01	; 1
+     fcc:	08 c0       	rjmp	.+16     	; 0xfde <__stack+0xb7f>
+else if(I==1){w=1;}
+     fce:	a1 e0       	ldi	r26, 0x01	; 1
+     fd0:	b0 e0       	ldi	r27, 0x00	; 0
+     fd2:	c1 5e       	subi	r28, 0xE1	; 225
+     fd4:	de 4f       	sbci	r29, 0xFE	; 254
+     fd6:	b9 83       	std	Y+1, r27	; 0x01
+     fd8:	a8 83       	st	Y, r26
+     fda:	cf 51       	subi	r28, 0x1F	; 31
+     fdc:	d1 40       	sbci	r29, 0x01	; 1
+     fde:	8e 01       	movw	r16, r28
+     fe0:	0b 5f       	subi	r16, 0xFB	; 251
+     fe2:	1e 4f       	sbci	r17, 0xFE	; 254
+
+for(j=0;j<=3;j++)
+	{f[0][j]=eeprom_read_byte(240+(i*4)+j);}
+     fe4:	c1 01       	movw	r24, r2
+     fe6:	0e 94 7c 09 	call	0x12f8	; 0x12f8 <__eerd_byte_m16>
+     fea:	f8 01       	movw	r30, r16
+     fec:	81 93       	st	Z+, r24
+     fee:	8f 01       	movw	r16, r30
+     ff0:	08 94       	sec
+     ff2:	21 1c       	adc	r2, r1
+     ff4:	31 1c       	adc	r3, r1
+if(I==4){w=1000;}
+else if(I==3){w=100;}
+else if(I==2){w=10;}
+else if(I==1){w=1;}
+
+for(j=0;j<=3;j++)
+     ff6:	c7 5e       	subi	r28, 0xE7	; 231
+     ff8:	de 4f       	sbci	r29, 0xFE	; 254
+     ffa:	28 81       	ld	r18, Y
+     ffc:	39 81       	ldd	r19, Y+1	; 0x01
+     ffe:	c9 51       	subi	r28, 0x19	; 25
+    1000:	d1 40       	sbci	r29, 0x01	; 1
+    1002:	e2 17       	cp	r30, r18
+    1004:	f3 07       	cpc	r31, r19
+    1006:	71 f7       	brne	.-36     	; 0xfe4 <__stack+0xb85>
+	{f[0][j]=eeprom_read_byte(240+(i*4)+j);}
+		
+	r=w*e[0][0]+w/10*e[0][1]+w/100*e[0][2]+w/1000*e[0][3];
+    1008:	c1 5e       	subi	r28, 0xE1	; 225
+    100a:	de 4f       	sbci	r29, 0xFE	; 254
+    100c:	88 81       	ld	r24, Y
+    100e:	99 81       	ldd	r25, Y+1	; 0x01
+    1010:	cf 51       	subi	r28, 0x1F	; 31
+    1012:	d1 40       	sbci	r29, 0x01	; 1
+    1014:	6a e0       	ldi	r22, 0x0A	; 10
+    1016:	70 e0       	ldi	r23, 0x00	; 0
+    1018:	0e 94 55 09 	call	0x12aa	; 0x12aa <__divmodhi4>
+    101c:	ce 5f       	subi	r28, 0xFE	; 254
+    101e:	de 4f       	sbci	r29, 0xFE	; 254
+    1020:	88 81       	ld	r24, Y
+    1022:	c2 50       	subi	r28, 0x02	; 2
+    1024:	d1 40       	sbci	r29, 0x01	; 1
+    1026:	90 e0       	ldi	r25, 0x00	; 0
+    1028:	68 9f       	mul	r22, r24
+    102a:	f0 01       	movw	r30, r0
+    102c:	69 9f       	mul	r22, r25
+    102e:	f0 0d       	add	r31, r0
+    1030:	78 9f       	mul	r23, r24
+    1032:	f0 0d       	add	r31, r0
+    1034:	11 24       	eor	r1, r1
+    1036:	28 ee       	ldi	r18, 0xE8	; 232
+    1038:	33 e0       	ldi	r19, 0x03	; 3
+    103a:	c1 5e       	subi	r28, 0xE1	; 225
+    103c:	de 4f       	sbci	r29, 0xFE	; 254
+    103e:	88 81       	ld	r24, Y
+    1040:	99 81       	ldd	r25, Y+1	; 0x01
+    1042:	cf 51       	subi	r28, 0x1F	; 31
+    1044:	d1 40       	sbci	r29, 0x01	; 1
+    1046:	b9 01       	movw	r22, r18
+    1048:	0e 94 55 09 	call	0x12aa	; 0x12aa <__divmodhi4>
+    104c:	cc 5f       	subi	r28, 0xFC	; 252
+    104e:	de 4f       	sbci	r29, 0xFE	; 254
+    1050:	48 81       	ld	r20, Y
+    1052:	c4 50       	subi	r28, 0x04	; 4
+    1054:	d1 40       	sbci	r29, 0x01	; 1
+    1056:	50 e0       	ldi	r21, 0x00	; 0
+    1058:	64 9f       	mul	r22, r20
+    105a:	c0 01       	movw	r24, r0
+    105c:	65 9f       	mul	r22, r21
+    105e:	90 0d       	add	r25, r0
+    1060:	74 9f       	mul	r23, r20
+    1062:	90 0d       	add	r25, r0
+    1064:	11 24       	eor	r1, r1
+    1066:	e8 0f       	add	r30, r24
+    1068:	f9 1f       	adc	r31, r25
+    106a:	cf 5f       	subi	r28, 0xFF	; 255
+    106c:	de 4f       	sbci	r29, 0xFE	; 254
+    106e:	88 81       	ld	r24, Y
+    1070:	c1 50       	subi	r28, 0x01	; 1
+    1072:	d1 40       	sbci	r29, 0x01	; 1
+    1074:	90 e0       	ldi	r25, 0x00	; 0
+    1076:	c1 5e       	subi	r28, 0xE1	; 225
+    1078:	de 4f       	sbci	r29, 0xFE	; 254
+    107a:	68 81       	ld	r22, Y
+    107c:	79 81       	ldd	r23, Y+1	; 0x01
+    107e:	cf 51       	subi	r28, 0x1F	; 31
+    1080:	d1 40       	sbci	r29, 0x01	; 1
+    1082:	68 9f       	mul	r22, r24
+    1084:	a0 01       	movw	r20, r0
+    1086:	69 9f       	mul	r22, r25
+    1088:	50 0d       	add	r21, r0
+    108a:	78 9f       	mul	r23, r24
+    108c:	50 0d       	add	r21, r0
+    108e:	11 24       	eor	r1, r1
+    1090:	e4 0f       	add	r30, r20
+    1092:	f5 1f       	adc	r31, r21
+    1094:	cb 01       	movw	r24, r22
+    1096:	64 e6       	ldi	r22, 0x64	; 100
+    1098:	70 e0       	ldi	r23, 0x00	; 0
+    109a:	0e 94 55 09 	call	0x12aa	; 0x12aa <__divmodhi4>
+    109e:	cd 5f       	subi	r28, 0xFD	; 253
+    10a0:	de 4f       	sbci	r29, 0xFE	; 254
+    10a2:	48 81       	ld	r20, Y
+    10a4:	c3 50       	subi	r28, 0x03	; 3
+    10a6:	d1 40       	sbci	r29, 0x01	; 1
+    10a8:	50 e0       	ldi	r21, 0x00	; 0
+    10aa:	64 9f       	mul	r22, r20
+    10ac:	c0 01       	movw	r24, r0
+    10ae:	65 9f       	mul	r22, r21
+    10b0:	90 0d       	add	r25, r0
+    10b2:	74 9f       	mul	r23, r20
+    10b4:	90 0d       	add	r25, r0
+    10b6:	11 24       	eor	r1, r1
+    10b8:	8e 0f       	add	r24, r30
+    10ba:	9f 1f       	adc	r25, r31
+	t=1000*f[0][0]+100*f[0][1]+10*f[0][2]+1*f[0][3];
+    10bc:	cb 5f       	subi	r28, 0xFB	; 251
+    10be:	de 4f       	sbci	r29, 0xFE	; 254
+    10c0:	68 81       	ld	r22, Y
+    10c2:	c5 50       	subi	r28, 0x05	; 5
+    10c4:	d1 40       	sbci	r29, 0x01	; 1
+    10c6:	70 e0       	ldi	r23, 0x00	; 0
+    10c8:	62 9f       	mul	r22, r18
+    10ca:	a0 01       	movw	r20, r0
+    10cc:	63 9f       	mul	r22, r19
+    10ce:	50 0d       	add	r21, r0
+    10d0:	72 9f       	mul	r23, r18
+    10d2:	50 0d       	add	r21, r0
+    10d4:	11 24       	eor	r1, r1
+    10d6:	ca 5f       	subi	r28, 0xFA	; 250
+    10d8:	de 4f       	sbci	r29, 0xFE	; 254
+    10da:	38 81       	ld	r19, Y
+    10dc:	c6 50       	subi	r28, 0x06	; 6
+    10de:	d1 40       	sbci	r29, 0x01	; 1
+    10e0:	24 e6       	ldi	r18, 0x64	; 100
+    10e2:	32 9f       	mul	r19, r18
+    10e4:	90 01       	movw	r18, r0
+    10e6:	11 24       	eor	r1, r1
+    10e8:	42 0f       	add	r20, r18
+    10ea:	53 1f       	adc	r21, r19
+    10ec:	c8 5f       	subi	r28, 0xF8	; 248
+    10ee:	de 4f       	sbci	r29, 0xFE	; 254
+    10f0:	28 81       	ld	r18, Y
+    10f2:	c8 50       	subi	r28, 0x08	; 8
+    10f4:	d1 40       	sbci	r29, 0x01	; 1
+    10f6:	42 0f       	add	r20, r18
+    10f8:	51 1d       	adc	r21, r1
+    10fa:	c9 5f       	subi	r28, 0xF9	; 249
+    10fc:	de 4f       	sbci	r29, 0xFE	; 254
+    10fe:	38 81       	ld	r19, Y
+    1100:	c7 50       	subi	r28, 0x07	; 7
+    1102:	d1 40       	sbci	r29, 0x01	; 1
+    1104:	2a e0       	ldi	r18, 0x0A	; 10
+    1106:	32 9f       	mul	r19, r18
+    1108:	90 01       	movw	r18, r0
+    110a:	11 24       	eor	r1, r1
+    110c:	24 0f       	add	r18, r20
+    110e:	35 1f       	adc	r19, r21
+
+if(t>=r)
+    1110:	28 17       	cp	r18, r24
+    1112:	39 07       	cpc	r19, r25
+    1114:	0c f4       	brge	.+2      	; 0x1118 <__stack+0xcb9>
+    1116:	62 c0       	rjmp	.+196    	; 0x11dc <__stack+0xd7d>
+{m=t-r;	
+    1118:	89 01       	movw	r16, r18
+    111a:	08 1b       	sub	r16, r24
+    111c:	19 0b       	sbc	r17, r25
+loc(0x01);
+    111e:	81 e0       	ldi	r24, 0x01	; 1
+    1120:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+    1124:	8f e1       	ldi	r24, 0x1F	; 31
+    1126:	9e e4       	ldi	r25, 0x4E	; 78
+    1128:	01 97       	sbiw	r24, 0x01	; 1
+    112a:	f1 f7       	brne	.-4      	; 0x1128 <__stack+0xcc9>
+    112c:	00 c0       	rjmp	.+0      	; 0x112e <__stack+0xccf>
+    112e:	00 00       	nop
+_delay_ms(10);
+loc(0x83);
+    1130:	83 e8       	ldi	r24, 0x83	; 131
+    1132:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Down Town Cafe");
+    1136:	80 e6       	ldi	r24, 0x60	; 96
+    1138:	90 e0       	ldi	r25, 0x00	; 0
+    113a:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0x94);
+    113e:	84 e9       	ldi	r24, 0x94	; 148
+    1140:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Bill paid");
+    1144:	83 ec       	ldi	r24, 0xC3	; 195
+    1146:	91 e0       	ldi	r25, 0x01	; 1
+    1148:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0xd4);
+    114c:	84 ed       	ldi	r24, 0xD4	; 212
+    114e:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Amount left");
+    1152:	8d ec       	ldi	r24, 0xCD	; 205
+    1154:	91 e0       	ldi	r25, 0x01	; 1
+    1156:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0xe4);
+    115a:	84 ee       	ldi	r24, 0xE4	; 228
+    115c:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+num(m);
+    1160:	c8 01       	movw	r24, r16
+    1162:	0e 94 31 01 	call	0x262	; 0x262 <num>
+    1166:	cd 5d       	subi	r28, 0xDD	; 221
+    1168:	de 4f       	sbci	r29, 0xFE	; 254
+    116a:	e8 81       	ld	r30, Y
+    116c:	f9 81       	ldd	r31, Y+1	; 0x01
+    116e:	c3 52       	subi	r28, 0x23	; 35
+    1170:	d1 40       	sbci	r29, 0x01	; 1
+int M[4],k=3;
+while(m!=0)
+{ M[k]=m%10;
+    1172:	2a e0       	ldi	r18, 0x0A	; 10
+    1174:	30 e0       	ldi	r19, 0x00	; 0
+    1176:	c8 01       	movw	r24, r16
+loc(0xd4);
+str("Amount left");
+loc(0xe4);
+num(m);
+int M[4],k=3;
+while(m!=0)
+    1178:	07 c0       	rjmp	.+14     	; 0x1188 <__stack+0xd29>
+{ M[k]=m%10;
+    117a:	b9 01       	movw	r22, r18
+    117c:	0e 94 55 09 	call	0x12aa	; 0x12aa <__divmodhi4>
+    1180:	92 93       	st	-Z, r25
+    1182:	82 93       	st	-Z, r24
+  k--;
+	m=m/10;
+    1184:	86 2f       	mov	r24, r22
+    1186:	97 2f       	mov	r25, r23
+loc(0xd4);
+str("Amount left");
+loc(0xe4);
+num(m);
+int M[4],k=3;
+while(m!=0)
+    1188:	00 97       	sbiw	r24, 0x00	; 0
+    118a:	b9 f7       	brne	.-18     	; 0x117a <__stack+0xd1b>
+    118c:	8e 01       	movw	r16, r28
+    118e:	07 5f       	subi	r16, 0xF7	; 247
+    1190:	1e 4f       	sbci	r17, 0xFE	; 254
+{ M[k]=m%10;
+  k--;
+	m=m/10;
+}
+for(j=0;j<=3;j++)
+{eeprom_write_byte((i*4)+j+240,M[j]);
+    1192:	ee 0c       	add	r14, r14
+    1194:	ff 1c       	adc	r15, r15
+    1196:	ee 0c       	add	r14, r14
+    1198:	ff 1c       	adc	r15, r15
+    119a:	a0 ef       	ldi	r26, 0xF0	; 240
+    119c:	b0 e0       	ldi	r27, 0x00	; 0
+    119e:	ea 0e       	add	r14, r26
+    11a0:	fb 1e       	adc	r15, r27
+    11a2:	f8 01       	movw	r30, r16
+    11a4:	60 81       	ld	r22, Z
+    11a6:	0e 5f       	subi	r16, 0xFE	; 254
+    11a8:	1f 4f       	sbci	r17, 0xFF	; 255
+    11aa:	c7 01       	movw	r24, r14
+    11ac:	0e 94 84 09 	call	0x1308	; 0x1308 <__eewr_byte_m16>
+    11b0:	08 94       	sec
+    11b2:	e1 1c       	adc	r14, r1
+    11b4:	f1 1c       	adc	r15, r1
+while(m!=0)
+{ M[k]=m%10;
+  k--;
+	m=m/10;
+}
+for(j=0;j<=3;j++)
+    11b6:	cd 5d       	subi	r28, 0xDD	; 221
+    11b8:	de 4f       	sbci	r29, 0xFE	; 254
+    11ba:	28 81       	ld	r18, Y
+    11bc:	39 81       	ldd	r19, Y+1	; 0x01
+    11be:	c3 52       	subi	r28, 0x23	; 35
+    11c0:	d1 40       	sbci	r29, 0x01	; 1
+    11c2:	02 17       	cp	r16, r18
+    11c4:	13 07       	cpc	r17, r19
+    11c6:	69 f7       	brne	.-38     	; 0x11a2 <__stack+0xd43>
+    11c8:	4f ef       	ldi	r20, 0xFF	; 255
+    11ca:	53 ec       	ldi	r21, 0xC3	; 195
+    11cc:	69 e0       	ldi	r22, 0x09	; 9
+    11ce:	41 50       	subi	r20, 0x01	; 1
+    11d0:	50 40       	sbci	r21, 0x00	; 0
+    11d2:	60 40       	sbci	r22, 0x00	; 0
+    11d4:	e1 f7       	brne	.-8      	; 0x11ce <__stack+0xd6f>
+    11d6:	00 c0       	rjmp	.+0      	; 0x11d8 <__stack+0xd79>
+    11d8:	00 00       	nop
+{eeprom_write_byte((i*4)+j+240,M[j]);
+}
+_delay_ms(400);
+p=0;
+break;
+    11da:	ed c8       	rjmp	.-3622   	; 0x3b6 <main+0xfa>
+}
+
+else
+{loc(0x01);
+    11dc:	81 e0       	ldi	r24, 0x01	; 1
+    11de:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+    11e2:	8f e1       	ldi	r24, 0x1F	; 31
+    11e4:	9e e4       	ldi	r25, 0x4E	; 78
+    11e6:	01 97       	sbiw	r24, 0x01	; 1
+    11e8:	f1 f7       	brne	.-4      	; 0x11e6 <__stack+0xd87>
+    11ea:	00 c0       	rjmp	.+0      	; 0x11ec <__stack+0xd8d>
+    11ec:	00 00       	nop
+_delay_ms(10);
+loc(0x83);
+    11ee:	83 e8       	ldi	r24, 0x83	; 131
+    11f0:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Down Town Cafe");
+    11f4:	80 e6       	ldi	r24, 0x60	; 96
+    11f6:	90 e0       	ldi	r25, 0x00	; 0
+    11f8:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0x94);
+    11fc:	84 e9       	ldi	r24, 0x94	; 148
+    11fe:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Payment failed");
+    1202:	89 ed       	ldi	r24, 0xD9	; 217
+    1204:	91 e0       	ldi	r25, 0x01	; 1
+    1206:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0xd5);
+    120a:	85 ed       	ldi	r24, 0xD5	; 213
+    120c:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("*Not Enough Money*");
+    1210:	88 ee       	ldi	r24, 0xE8	; 232
+    1212:	91 e0       	ldi	r25, 0x01	; 1
+    1214:	0e 94 22 01 	call	0x244	; 0x244 <str>
+    1218:	2f ef       	ldi	r18, 0xFF	; 255
+    121a:	33 ec       	ldi	r19, 0xC3	; 195
+    121c:	49 e0       	ldi	r20, 0x09	; 9
+    121e:	21 50       	subi	r18, 0x01	; 1
+    1220:	30 40       	sbci	r19, 0x00	; 0
+    1222:	40 40       	sbci	r20, 0x00	; 0
+    1224:	e1 f7       	brne	.-8      	; 0x121e <__stack+0xdbf>
+    1226:	00 c0       	rjmp	.+0      	; 0x1228 <__stack+0xdc9>
+    1228:	00 00       	nop
+_delay_ms(400);
+p=0;
+break;
+    122a:	c5 c8       	rjmp	.-3702   	; 0x3b6 <main+0xfa>
+str("Enter Bill Amount");
+loc(0xd4);
+str("Pay");
+
+int I,K;
+for(I=0,K=0xe0;I<=4&&K<=0xe5;I++,K++)
+    122c:	0f 5f       	subi	r16, 0xFF	; 255
+    122e:	1f 4f       	sbci	r17, 0xFF	; 255
+    1230:	05 30       	cpi	r16, 0x05	; 5
+    1232:	11 05       	cpc	r17, r1
+    1234:	09 f4       	brne	.+2      	; 0x1238 <__stack+0xdd9>
+    1236:	bf c8       	rjmp	.-3714   	; 0x3b6 <main+0xfa>
+    1238:	08 94       	sec
+    123a:	81 1c       	adc	r8, r1
+    123c:	91 1c       	adc	r9, r1
+    123e:	06 30       	cpi	r16, 0x06	; 6
+    1240:	11 05       	cpc	r17, r1
+    1242:	09 f0       	breq	.+2      	; 0x1246 <__stack+0xde7>
+    1244:	3d ce       	rjmp	.-902    	; 0xec0 <__stack+0xa61>
+    1246:	b7 c8       	rjmp	.-3730   	; 0x3b6 <main+0xfa>
+break;
+}
+}
+
+else
+{loc(0x01);
+    1248:	81 e0       	ldi	r24, 0x01	; 1
+    124a:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+    124e:	8f e1       	ldi	r24, 0x1F	; 31
+    1250:	9e e4       	ldi	r25, 0x4E	; 78
+    1252:	01 97       	sbiw	r24, 0x01	; 1
+    1254:	f1 f7       	brne	.-4      	; 0x1252 <__stack+0xdf3>
+    1256:	00 c0       	rjmp	.+0      	; 0x1258 <__stack+0xdf9>
+    1258:	00 00       	nop
+_delay_ms(10);
+loc(0x83);
+    125a:	83 e8       	ldi	r24, 0x83	; 131
+    125c:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Down Town Cafe");
+    1260:	80 e6       	ldi	r24, 0x60	; 96
+    1262:	90 e0       	ldi	r25, 0x00	; 0
+    1264:	0e 94 22 01 	call	0x244	; 0x244 <str>
+loc(0x94);
+    1268:	84 e9       	ldi	r24, 0x94	; 148
+    126a:	0e 94 fd 00 	call	0x1fa	; 0x1fa <loc>
+str("Invalid card");
+    126e:	84 e3       	ldi	r24, 0x34	; 52
+    1270:	91 e0       	ldi	r25, 0x01	; 1
+    1272:	0e 94 22 01 	call	0x244	; 0x244 <str>
+    1276:	2f ef       	ldi	r18, 0xFF	; 255
+    1278:	32 e5       	ldi	r19, 0x52	; 82
+    127a:	47 e0       	ldi	r20, 0x07	; 7
+    127c:	21 50       	subi	r18, 0x01	; 1
+    127e:	30 40       	sbci	r19, 0x00	; 0
+    1280:	40 40       	sbci	r20, 0x00	; 0
+    1282:	e1 f7       	brne	.-8      	; 0x127c <__stack+0xe1d>
+    1284:	00 c0       	rjmp	.+0      	; 0x1286 <__stack+0xe27>
+    1286:	00 00       	nop
+    1288:	96 c8       	rjmp	.-3796   	; 0x3b6 <main+0xfa>
+
+0000128a <ini>:
+	ch=ch/10;
+}
+}
+
+void ini()
+{UBRRL=51;
+    128a:	83 e3       	ldi	r24, 0x33	; 51
+    128c:	89 b9       	out	0x09, r24	; 9
+ UBRRH=0;
+    128e:	10 bc       	out	0x20, r1	; 32
+ UCSRB=0x18;
+    1290:	88 e1       	ldi	r24, 0x18	; 24
+    1292:	8a b9       	out	0x0a, r24	; 10
+ UCSRC=0x8e;
+    1294:	8e e8       	ldi	r24, 0x8E	; 142
+    1296:	80 bd       	out	0x20, r24	; 32
+}
+    1298:	08 95       	ret
+
+0000129a <send>:
+
+void send(char send)
+{while((UCSRA & 0x20)==0);
+    129a:	5d 9b       	sbis	0x0b, 5	; 11
+    129c:	fe cf       	rjmp	.-4      	; 0x129a <send>
+ UDR=send;
+    129e:	8c b9       	out	0x0c, r24	; 12
+}
+    12a0:	08 95       	ret
+
+000012a2 <rec>:
+
+
+char rec(void)
+{while((UCSRA & 0x80)==0);
+    12a2:	5f 9b       	sbis	0x0b, 7	; 11
+    12a4:	fe cf       	rjmp	.-4      	; 0x12a2 <rec>
+ return UDR;
+    12a6:	8c b1       	in	r24, 0x0c	; 12
+}
+    12a8:	08 95       	ret
+
+000012aa <__divmodhi4>:
+    12aa:	97 fb       	bst	r25, 7
+    12ac:	09 2e       	mov	r0, r25
+    12ae:	07 26       	eor	r0, r23
+    12b0:	0a d0       	rcall	.+20     	; 0x12c6 <__divmodhi4_neg1>
+    12b2:	77 fd       	sbrc	r23, 7
+    12b4:	04 d0       	rcall	.+8      	; 0x12be <__divmodhi4_neg2>
+    12b6:	0c d0       	rcall	.+24     	; 0x12d0 <__udivmodhi4>
+    12b8:	06 d0       	rcall	.+12     	; 0x12c6 <__divmodhi4_neg1>
+    12ba:	00 20       	and	r0, r0
+    12bc:	1a f4       	brpl	.+6      	; 0x12c4 <__divmodhi4_exit>
+
+000012be <__divmodhi4_neg2>:
+    12be:	70 95       	com	r23
+    12c0:	61 95       	neg	r22
+    12c2:	7f 4f       	sbci	r23, 0xFF	; 255
+
+000012c4 <__divmodhi4_exit>:
+    12c4:	08 95       	ret
+
+000012c6 <__divmodhi4_neg1>:
+    12c6:	f6 f7       	brtc	.-4      	; 0x12c4 <__divmodhi4_exit>
+    12c8:	90 95       	com	r25
+    12ca:	81 95       	neg	r24
+    12cc:	9f 4f       	sbci	r25, 0xFF	; 255
+    12ce:	08 95       	ret
+
+000012d0 <__udivmodhi4>:
+    12d0:	aa 1b       	sub	r26, r26
+    12d2:	bb 1b       	sub	r27, r27
+    12d4:	51 e1       	ldi	r21, 0x11	; 17
+    12d6:	07 c0       	rjmp	.+14     	; 0x12e6 <__udivmodhi4_ep>
+
+000012d8 <__udivmodhi4_loop>:
+    12d8:	aa 1f       	adc	r26, r26
+    12da:	bb 1f       	adc	r27, r27
+    12dc:	a6 17       	cp	r26, r22
+    12de:	b7 07       	cpc	r27, r23
+    12e0:	10 f0       	brcs	.+4      	; 0x12e6 <__udivmodhi4_ep>
+    12e2:	a6 1b       	sub	r26, r22
+    12e4:	b7 0b       	sbc	r27, r23
+
+000012e6 <__udivmodhi4_ep>:
+    12e6:	88 1f       	adc	r24, r24
+    12e8:	99 1f       	adc	r25, r25
+    12ea:	5a 95       	dec	r21
+    12ec:	a9 f7       	brne	.-22     	; 0x12d8 <__udivmodhi4_loop>
+    12ee:	80 95       	com	r24
+    12f0:	90 95       	com	r25
+    12f2:	bc 01       	movw	r22, r24
+    12f4:	cd 01       	movw	r24, r26
+    12f6:	08 95       	ret
+
+000012f8 <__eerd_byte_m16>:
+    12f8:	e1 99       	sbic	0x1c, 1	; 28
+    12fa:	fe cf       	rjmp	.-4      	; 0x12f8 <__eerd_byte_m16>
+    12fc:	9f bb       	out	0x1f, r25	; 31
+    12fe:	8e bb       	out	0x1e, r24	; 30
+    1300:	e0 9a       	sbi	0x1c, 0	; 28
+    1302:	99 27       	eor	r25, r25
+    1304:	8d b3       	in	r24, 0x1d	; 29
+    1306:	08 95       	ret
+
+00001308 <__eewr_byte_m16>:
+    1308:	26 2f       	mov	r18, r22
+
+0000130a <__eewr_r18_m16>:
+    130a:	e1 99       	sbic	0x1c, 1	; 28
+    130c:	fe cf       	rjmp	.-4      	; 0x130a <__eewr_r18_m16>
+    130e:	9f bb       	out	0x1f, r25	; 31
+    1310:	8e bb       	out	0x1e, r24	; 30
+    1312:	2d bb       	out	0x1d, r18	; 29
+    1314:	0f b6       	in	r0, 0x3f	; 63
+    1316:	f8 94       	cli
+    1318:	e2 9a       	sbi	0x1c, 2	; 28
+    131a:	e1 9a       	sbi	0x1c, 1	; 28
+    131c:	0f be       	out	0x3f, r0	; 63
+    131e:	01 96       	adiw	r24, 0x01	; 1
+    1320:	08 95       	ret
+
+00001322 <_exit>:
+    1322:	f8 94       	cli
+
+00001324 <__stop_program>:
+    1324:	ff cf       	rjmp	.-2      	; 0x1324 <__stop_program>
